@@ -1,0 +1,35 @@
+apply plugin: 'java-library'
+apply plugin: 'org.jetbrains.kotlin.jvm'
+apply plugin: 'jacoco'
+
+jacoco {
+    toolVersion = "0.8.3"
+}
+
+sourceCompatibility = JavaVersion.VERSION_1_8
+targetCompatibility = JavaVersion.VERSION_1_8
+
+sourceSets {
+    test.java.srcDirs += 'src/test/kotlin'
+}
+
+dependencies {
+    //Kotlin
+    implementation deps.kotlin.stdlib_java
+    //OkHttp
+    api deps.okhttp3
+    api(deps.okhttp_signpost, {
+        exclude group: 'com.squareup.okhttp3'
+    })
+    //Dagger
+    implementation deps.dagger.runtime
+    //RxJava
+    api deps.rxjava.rx_kotlin
+    api deps.rxjava.rxjava2
+    //Tools
+    implementation 'org.slf4j:slf4j-api:1.7.25'
+    implementation 'org.slf4j:slf4j-simple:1.7.25'
+    // Dependencies for local unit tests
+    testImplementation "io.mockk:mockk:1.9.1"
+    testImplementation "com.google.truth:truth:0.43"
+}
