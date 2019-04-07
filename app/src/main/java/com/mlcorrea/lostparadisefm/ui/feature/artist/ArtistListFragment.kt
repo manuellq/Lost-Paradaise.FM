@@ -14,6 +14,8 @@ import com.mlcorrea.lostparadisefm.ui.base.BaseViewModelPage
 import com.mlcorrea.lostparadisefm.ui.feature.album.albums.adapter.AlbumDiffCallback
 import com.mlcorrea.lostparadisefm.ui.feature.album.albums.adapter.AlbumViewRender
 import com.mlcorrea.lostparadisefm.ui.feature.artist.adapter.ArtistDataSource
+import com.mlcorrea.lostparadisefm.ui.feature.artist.adapter.ArtistDiffCallback
+import com.mlcorrea.lostparadisefm.ui.feature.artist.adapter.ArtistViewRender
 import com.mlcorrea.lostparadisefm.ui.feature.home.MainActivity
 import com.mlcorrea.lostparadisefm.ui.feature.home.MainActivityVM
 import com.mlcorrea.lostparadisefm.ui.renders.RendererRecyclerViewPagedAdapter
@@ -42,7 +44,7 @@ class ArtistsFragment : BaseFragmentList<Artist, ArtistDataSource>(R.layout.frag
         //Set recycler view
         renderRecyclerView =
             RendererRecyclerViewPagedAdapter(
-                diffCallback = AlbumDiffCallback(),
+                diffCallback = ArtistDiffCallback(),
                 loadMoreViewRender = LoadMoreViewRender(object :
                     LoadMoreViewRender.LoadMoreViewListener {
                     override fun onRetryClick() {
@@ -52,7 +54,7 @@ class ArtistsFragment : BaseFragmentList<Artist, ArtistDataSource>(R.layout.frag
             )
 
         renderRecyclerView.registerRenderer(
-            AlbumViewRender { view, album -> }
+           ArtistViewRender { view, artist -> }
         )
 
         val gridLayout = GridLayoutManager(context, 1)

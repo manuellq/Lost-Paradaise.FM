@@ -7,4 +7,4 @@ import com.squareup.moshi.JsonClass
  * Created by manuel on 07/04/19
  */
 @JsonClass(generateAdapter = true)
-data class ArtistMatchesDTO(@Json(name = "album") val artists: List<ArtistDTO>?)
+data class ArtistMatchesDTO(@Json(name = "artist") val artists: List<ArtistDTO>?)

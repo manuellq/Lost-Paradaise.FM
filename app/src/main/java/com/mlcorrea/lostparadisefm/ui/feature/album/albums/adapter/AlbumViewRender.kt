@@ -59,7 +59,7 @@ class AlbumViewRender(private val clickListener: (View, Album) -> Unit = { _: Vi
     private fun getSmallImage(images: List<Image>?): String? {
         if (images == null) return null
         for (image in images) {
-            if (image.size == "small") {
+            if (image.size == "medium") {
                 return image.text
             }
         }

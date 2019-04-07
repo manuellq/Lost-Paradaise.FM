@@ -59,7 +59,7 @@ class ArtistViewRender(private val clickListener: (View, Artist) -> Unit = { _: 
     private fun getSmallImage(images: List<Image>?): String? {
         if (images == null) return null
         for (image in images) {
-            if (image.size == "small") {
+            if (image.size == "medium") {
                 return image.text
             }
         }

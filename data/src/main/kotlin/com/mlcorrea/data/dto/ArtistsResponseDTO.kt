@@ -18,7 +18,7 @@ data class ArtistsResponseDTO(
     val startIndex: Long?,
     @Json(name = "opensearch:itemsPerPage")
     val itemsPerPage: Long?,
-    @Json(name = "albummatches")
+    @Json(name = "artistmatches")
     val artistMatches: ArtistMatchesDTO?
 ) : BaseDto<ArtistPage> {
 
