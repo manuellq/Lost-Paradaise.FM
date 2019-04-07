@@ -6,4 +6,7 @@
     <string name="title_album">Albums</string>
     <string name="title_artist">Artists</string>
     <string name="title_track">Tracks</string>
+    <string name="retry_button">Retry</string>
+    <string name="text_empty_list_generic">No result</string>
+    <string name="text_search">Search</string>
 </resources>

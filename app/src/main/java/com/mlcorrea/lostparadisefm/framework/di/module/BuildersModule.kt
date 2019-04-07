@@ -2,7 +2,7 @@ package com.mlcorrea.lostparadisefm.framework.di.module
 
 import com.mlcorrea.lostparadisefm.framework.di.module.activity.MainActivityModule
 import com.mlcorrea.lostparadisefm.framework.di.scope.PerActivity
-import com.mlcorrea.lostparadisefm.ui.home.MainActivity
+import com.mlcorrea.lostparadisefm.ui.feature.home.MainActivity
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
 

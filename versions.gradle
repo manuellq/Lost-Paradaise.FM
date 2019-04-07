@@ -109,6 +109,7 @@ deps.rx_binding = rx_binding
 
 //---------------------------------------------------
 
+deps.picasso = "com.squareup.picasso:picasso:2.5.2"
 deps.event_bus = "org.greenrobot:eventbus:3.0.0"
 deps.timber = "com.jakewharton.timber:timber:$versions.timber"
 deps.butter_knife_compiler = "com.jakewharton:butterknife-compiler:$versions.butter_knife"

@@ -116,14 +116,14 @@ dependencies {
     kapt deps.lifecycle.compiler
     implementation deps.lifecycle.extensions
     //Google dagger 2
-    kapt "com.google.dagger:dagger-compiler:2.21"
-    kapt "com.google.dagger:dagger-android-processor:2.21"
-    implementation "com.google.dagger:dagger:2.21"
-    implementation "com.google.dagger:dagger-android-support:2.21"
-//    kapt deps.dagger.compiler
-//    kapt deps.dagger.android_support_compiler
-//    implementation deps.dagger.runtime
-//    implementation deps.dagger.android_support
+    kapt deps.dagger.compiler
+    kapt deps.dagger.android_support_compiler
+    implementation deps.dagger.runtime
+    implementation deps.dagger.android_support
+    //Paging
+    implementation "androidx.paging:paging-runtime:2.1.0" // For Kotlin use paging-runtime-ktx
+    // optional - RxJava support
+    implementation "androidx.paging:paging-rxjava2:2.1.0" // For Kotlin use paging-rxjava2-ktx
     //kotlin libraries
     implementation deps.kotlin.anko_commons
     implementation deps.kotlin.anko_design
@@ -163,7 +163,7 @@ dependencies {
     kapt deps.butter_knife_compiler
     implementation deps.butter_kinfe
     implementation deps.timber
-
+    implementation deps.picasso
     //------------------------------
 
     //Testing Implementation
@@ -173,6 +173,8 @@ dependencies {
     testImplementation(deps.roboelectric, {
         exclude group: 'com.android.support'
     })
+    // alternatively - without Android dependencies for testing
+    testImplementation "androidx.paging:paging-common:2.1.0" // For Kotlin use paging-common-ktx
 
     //Testing test Implementation
     androidTestImplementation "com.google.truth:truth:0.43"

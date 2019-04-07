@@ -1,6 +1,7 @@
 package com.mlcorrea.lostparadisefm.framework.retrofit.service
 
 import com.mlcorrea.data.dto.*
+import com.mlcorrea.data.dto.base.NetworkResponseDTO
 import io.reactivex.Observable
 import retrofit2.http.GET
 import retrofit2.http.Query
@@ -14,7 +15,7 @@ interface ApiService {
 
     //Albums
     @GET("/2.0/?method=album.search")
-    fun getAlbums(@Query("album") album: String, @Query("limit") limit: String, @Query("page") page: String): Observable<Result<AlbumsResponseDTO>>
+    fun getAlbums(@Query("album") album: String, @Query("limit") limit: String, @Query("page") page: String): Observable<NetworkResponseDTO<AlbumsResponseDTO>>
 
     @GET("/2.0/?method=album.getinfo")
     fun getAlbumInfo(@Query("artist") artist: String, @Query("album") album: String): Observable<Result<AlbumInfoResponseDTO>>
