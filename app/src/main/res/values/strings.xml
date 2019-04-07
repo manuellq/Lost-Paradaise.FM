@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">Lost paradise FM</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_album">Albums</string>
+    <string name="title_artist">Artists</string>
+    <string name="title_track">Tracks</string>
 </resources>

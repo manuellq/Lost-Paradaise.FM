@@ -1,4 +1,4 @@
-package com.mlcorrea.lostparadisefm.framework.util
+package com.mlcorrea.lostparadisefm.util
 
 import com.facebook.stetho.okhttp3.StethoInterceptor
 import okhttp3.Interceptor

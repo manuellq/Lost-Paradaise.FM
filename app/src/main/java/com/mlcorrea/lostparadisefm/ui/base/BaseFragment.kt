@@ -24,8 +24,8 @@ abstract class BaseFragment : Fragment(), HasSupportFragmentInjector {
     lateinit var activityContext: Context
     @Inject
     lateinit var childFragmentInjector: DispatchingAndroidInjector<Fragment>
-//    @Inject
-//    lateinit var viewModelFactoryB: ViewModelProvider.Factory
+    @Inject
+    lateinit var viewModelFactoryB: ViewModelProvider.Factory
 
     /*------ abstract methods ------*/
 

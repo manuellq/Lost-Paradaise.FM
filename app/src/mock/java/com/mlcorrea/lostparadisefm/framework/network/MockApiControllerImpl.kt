@@ -6,4 +6,7 @@ import com.mlcorrea.data.network.ApiController
  * Created by manuel on 06/04/19
  */
 class MockApiControllerImpl : ApiController {
+    override fun getAlbums(album: String, page: String, limit: String) {
+
+    }
 }

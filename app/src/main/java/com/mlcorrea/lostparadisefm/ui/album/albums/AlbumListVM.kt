@@ -1,4 +1,4 @@
-package com.mlcorrea.lostparadisefm.ui.album
+package com.mlcorrea.lostparadisefm.ui.album.albums
 
 import androidx.lifecycle.ViewModel
 import javax.inject.Inject
