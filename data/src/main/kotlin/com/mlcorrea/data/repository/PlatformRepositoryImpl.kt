@@ -2,9 +2,11 @@ package com.mlcorrea.data.repository
 
 import com.mlcorrea.data.dto.AlbumsResponseDTO
 import com.mlcorrea.data.dto.ArtistsResponseDTO
+import com.mlcorrea.data.dto.TracksResponseDTO
 import com.mlcorrea.data.network.ApiController
 import com.mlcorrea.domain.model.AlbumPage
 import com.mlcorrea.domain.model.ArtistPage
+import com.mlcorrea.domain.model.TrackPage
 import com.mlcorrea.domain.repository.PlatformRepository
 import io.reactivex.Observable
 
@@ -28,4 +30,10 @@ class PlatformRepositoryImpl constructor(private val apiController: ApiControlle
             }
     }
 
+    override fun getTracks(track: String, page: String, limit: String): Observable<TrackPage> {
+        return apiController.getTrack(track, page, limit)
+            .map { response: TracksResponseDTO ->
+                response.unwrapDto()
+            }
+    }
 }

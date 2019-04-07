@@ -2,6 +2,7 @@ package com.mlcorrea.data.network
 
 import com.mlcorrea.data.dto.AlbumsResponseDTO
 import com.mlcorrea.data.dto.ArtistsResponseDTO
+import com.mlcorrea.data.dto.TracksResponseDTO
 import io.reactivex.Observable
 
 /**
@@ -12,4 +13,6 @@ interface ApiController {
     fun getAlbums(album: String, page: String, limit: String): Observable<AlbumsResponseDTO>
 
     fun getArtist(album: String, page: String, limit: String): Observable<ArtistsResponseDTO>
+
+    fun getTrack(album: String, page: String, limit: String): Observable<TracksResponseDTO>
 }

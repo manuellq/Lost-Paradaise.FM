@@ -12,6 +12,7 @@ import com.mlcorrea.lostparadisefm.framework.extension.viewModelInit
 import com.mlcorrea.lostparadisefm.ui.base.BaseActivity
 import com.mlcorrea.lostparadisefm.ui.feature.album.albums.AlbumListFragment
 import com.mlcorrea.lostparadisefm.ui.feature.artist.ArtistsFragment
+import com.mlcorrea.lostparadisefm.ui.feature.track.TrackListFragment
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import java.util.concurrent.TimeUnit
@@ -80,6 +81,7 @@ class MainActivity : BaseActivity() {
                     return@OnNavigationItemSelectedListener true
                 }
                 R.id.navigation_track -> {
+                    addFragment(R.id.ui_main_container, TrackListFragment.newInstance())
                     return@OnNavigationItemSelectedListener true
                 }
             }

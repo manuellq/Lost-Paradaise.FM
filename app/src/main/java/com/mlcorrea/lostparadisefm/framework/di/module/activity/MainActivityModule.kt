@@ -4,11 +4,13 @@ import androidx.appcompat.app.AppCompatActivity
 import com.mlcorrea.lostparadisefm.framework.di.module.base.BaseActivityModule
 import com.mlcorrea.lostparadisefm.framework.di.module.fragment.AlbumListFragmentModule
 import com.mlcorrea.lostparadisefm.framework.di.module.fragment.ArtistsFragmentModule
+import com.mlcorrea.lostparadisefm.framework.di.module.fragment.TrackListFragmentModule
 import com.mlcorrea.lostparadisefm.framework.di.scope.PerActivity
 import com.mlcorrea.lostparadisefm.framework.di.scope.PerFragment
 import com.mlcorrea.lostparadisefm.ui.feature.album.albums.AlbumListFragment
 import com.mlcorrea.lostparadisefm.ui.feature.artist.ArtistsFragment
 import com.mlcorrea.lostparadisefm.ui.feature.home.MainActivity
+import com.mlcorrea.lostparadisefm.ui.feature.track.TrackListFragment
 import dagger.Binds
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
@@ -31,5 +33,8 @@ abstract class MainActivityModule {
     @ContributesAndroidInjector(modules = [ArtistsFragmentModule::class])
     internal abstract fun artistsFragment(): ArtistsFragment
 
+    @PerFragment
+    @ContributesAndroidInjector(modules = [TrackListFragmentModule::class])
+    internal abstract fun trackListFragmen(): TrackListFragment
 
 }
