@@ -1,6 +1,7 @@
 package com.mlcorrea.domain.repository
 
 import com.mlcorrea.domain.model.AlbumPage
+import com.mlcorrea.domain.model.ArtistPage
 import io.reactivex.Observable
 
 /**
@@ -9,4 +10,7 @@ import io.reactivex.Observable
 interface PlatformRepository {
 
     fun getAlbums(album: String, page: String, limit: String): Observable<AlbumPage>
+
+    fun getArtists(artist: String, page: String, limit: String): Observable<ArtistPage>
+
 }

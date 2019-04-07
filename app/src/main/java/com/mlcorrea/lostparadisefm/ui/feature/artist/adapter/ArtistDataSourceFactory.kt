@@ -1,7 +1,7 @@
-package com.mlcorrea.lostparadisefm.ui.feature.album.albums.adapter
+package com.mlcorrea.lostparadisefm.ui.feature.artist.adapter
 
 import androidx.paging.DataSource
-import com.mlcorrea.domain.iteractor.album.GetAlbums
+import com.mlcorrea.domain.iteractor.artist.GetArtist
 import com.mlcorrea.domain.model.adapter.ViewModelData
 import com.mlcorrea.lostparadisefm.ui.base.BaseDataSourceFactory
 
@@ -9,12 +9,12 @@ import com.mlcorrea.lostparadisefm.ui.base.BaseDataSourceFactory
 /**
  * Created by manuel.correa on 14/03/2018.
  */
-class AlbumDataSourceFactory(private val getAlbums: GetAlbums) :
-    BaseDataSourceFactory<AlbumDataSource>() {
+class ArtistDataSourceFactory(private val getArtist: GetArtist) :
+    BaseDataSourceFactory<ArtistDataSource>() {
 
 
     override fun create(): DataSource<Long, ViewModelData> {
-        val transactionsDataSource = AlbumDataSource(getQuery(), getAlbums)
+        val transactionsDataSource = ArtistDataSource(getQuery(), getArtist)
         getMutableLiveData().postValue(transactionsDataSource)
         return transactionsDataSource
     }

@@ -23,7 +23,7 @@ interface ApiService {
 
     //Artist
     @GET("/2.0/?method=artist.search")
-    fun getArtists(@Query("artist") artist: String, @Query("limit") limit: String, @Query("page") page: String): Observable<Result<ArtistsResponseDTO>>
+    fun getArtists(@Query("artist") artist: String, @Query("limit") limit: String, @Query("page") page: String):  Observable<NetworkResponseDTO<ArtistsResponseDTO>>
 
     @GET("/2.0/?method=artist.getinfo")
     fun getArtistInfo(@Query("artist") artist: String): Observable<Result<ArtistInfoResponseDTO>>

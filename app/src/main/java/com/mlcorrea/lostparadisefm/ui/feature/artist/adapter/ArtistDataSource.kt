@@ -1,7 +1,7 @@
-package com.mlcorrea.lostparadisefm.ui.feature.album.albums.adapter
+package com.mlcorrea.lostparadisefm.ui.feature.artist.adapter
 
-import com.mlcorrea.domain.iteractor.album.GetAlbums
-import com.mlcorrea.domain.model.AlbumPage
+import com.mlcorrea.domain.iteractor.artist.GetArtist
+import com.mlcorrea.domain.model.ArtistPage
 import com.mlcorrea.domain.model.adapter.ViewModelData
 import com.mlcorrea.domain.network.NetworkRequestState
 import com.mlcorrea.lostparadisefm.ui.base.BaseDataSource
@@ -16,7 +16,7 @@ import timber.log.Timber
 /**
  * Created by manuel.correa on 14/03/2018.
  */
-class AlbumDataSource(private val query: String, private val getAlbums: GetAlbums) :
+class ArtistDataSource(private val query: String, private val getArtist: GetArtist) :
     BaseDataSource() {
 
     private val compositeDisposable: CompositeDisposable = CompositeDisposable()
@@ -32,21 +32,21 @@ class AlbumDataSource(private val query: String, private val getAlbums: GetAlbum
 
     override fun loadInitial(params: LoadInitialParams<Long>, callback: LoadInitialCallback<Long, ViewModelData>) {
         getNetworkState().postValue(NetworkRequestState.LOADING)
-        getAlbums.clear()
+        getArtist.clear()
         if (query.isEmpty() && query.isBlank()) {
             callback.onResult(emptyList(), null, 2L)
             getNetworkState().postValue(NetworkRequestState.EMPTY)
         } else {
-            getAlbums.execute(object : DisposableObserver<AlbumPage>() {
+            getArtist.execute(object : DisposableObserver<ArtistPage>() {
                 override fun onComplete() {
                     //
                 }
 
-                override fun onNext(t: AlbumPage) {
+                override fun onNext(t: ArtistPage) {
                     Timber.d("success")
                     // clear retry since last request succeeded
                     setRetry(null)
-                    callback.onResult(t.albums, null, 2L)
+                    callback.onResult(t.artists, null, 2L)
                     getNetworkState().postValue(NetworkRequestState.LOADED)
                 }
 
@@ -56,7 +56,7 @@ class AlbumDataSource(private val query: String, private val getAlbums: GetAlbum
                     setRetry(Action { loadInitial(params, callback) })
                     onErrorLoading(e)
                 }
-            }, GetAlbums.Params(query, 1, params.requestedLoadSize))
+            }, GetArtist.Params(query, 1, params.requestedLoadSize))
         }
     }
 
@@ -64,18 +64,18 @@ class AlbumDataSource(private val query: String, private val getAlbums: GetAlbum
         // set network value to loading.
         getNetworkState().postValue(NetworkRequestState.LOADING)
         //get the initial users from the api
-        getAlbums.execute(object : DisposableObserver<AlbumPage>() {
+        getArtist.execute(object : DisposableObserver<ArtistPage>() {
             override fun onComplete() {
                 //
             }
 
-            override fun onNext(t: AlbumPage) {
+            override fun onNext(t: ArtistPage) {
                 Timber.d("success")
                 // clear retry since last request succeeded
                 setRetry(null)
                 val page: Long = params.key + 1
                 getNetworkState().postValue(NetworkRequestState.LOADED)
-                callback.onResult(t.albums, page)
+                callback.onResult(t.artists, page)
             }
 
             override fun onError(e: Throwable) {
@@ -84,7 +84,7 @@ class AlbumDataSource(private val query: String, private val getAlbums: GetAlbum
                 setRetry(Action { loadAfter(params, callback) })
                 onErrorLoading(e)
             }
-        }, GetAlbums.Params(query, params.key.toInt(), params.requestedLoadSize))
+        }, GetArtist.Params(query, params.key.toInt(), params.requestedLoadSize))
     }
 
     /*--------------PUBLIC METHOD----------*/
@@ -104,13 +104,13 @@ class AlbumDataSource(private val query: String, private val getAlbums: GetAlbum
         return compositeDisposable
     }
 
-    fun getDisposablePaymentReport(): GetAlbums {
-        return getAlbums
+    fun getDisposablePaymentReport(): GetArtist {
+        return getArtist
     }
 
     fun disposeAll() {
         compositeDisposable.dispose()
-        getAlbums.dispose()
+        getArtist.dispose()
     }
 
     /*------------PRIVATE METHOD---------*/

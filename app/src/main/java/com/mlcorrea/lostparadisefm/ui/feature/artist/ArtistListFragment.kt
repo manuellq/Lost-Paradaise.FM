@@ -1,4 +1,4 @@
-package com.mlcorrea.lostparadisefm.ui.feature.album.albums
+package com.mlcorrea.lostparadisefm.ui.feature.artist
 
 
 import android.app.Fragment
@@ -6,14 +6,14 @@ import android.os.Bundle
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.GridLayoutManager
-import com.mlcorrea.domain.model.Album
+import com.mlcorrea.domain.model.Artist
 import com.mlcorrea.lostparadisefm.R
 import com.mlcorrea.lostparadisefm.framework.extension.viewModelInit
 import com.mlcorrea.lostparadisefm.ui.base.BaseFragmentList
 import com.mlcorrea.lostparadisefm.ui.base.BaseViewModelPage
-import com.mlcorrea.lostparadisefm.ui.feature.album.albums.adapter.AlbumDataSource
 import com.mlcorrea.lostparadisefm.ui.feature.album.albums.adapter.AlbumDiffCallback
 import com.mlcorrea.lostparadisefm.ui.feature.album.albums.adapter.AlbumViewRender
+import com.mlcorrea.lostparadisefm.ui.feature.artist.adapter.ArtistDataSource
 import com.mlcorrea.lostparadisefm.ui.feature.home.MainActivity
 import com.mlcorrea.lostparadisefm.ui.feature.home.MainActivityVM
 import com.mlcorrea.lostparadisefm.ui.renders.RendererRecyclerViewPagedAdapter
@@ -22,17 +22,15 @@ import com.mlcorrea.lostparadisefm.ui.renders.baserenders.LoadMoreViewRender
 
 /**
  * A simple [Fragment] subclass.
- * Use the [AlbumListFragment.newInstance] factory method to
- * create an instance of this fragment.
  *
  */
-class AlbumListFragment : BaseFragmentList<Album, AlbumDataSource>(R.layout.fragment_album_list) {
+class ArtistsFragment : BaseFragmentList<Artist, ArtistDataSource>(R.layout.fragment_artist_list) {
 
-
-    private lateinit var viewModel: AlbumListVM
+    private lateinit var viewModel: ArtistListVM
     private var viewModelParent: MainActivityVM? = null
 
-    override val getViewModel: BaseViewModelPage<AlbumDataSource, Album>
+
+    override val getViewModel: BaseViewModelPage<ArtistDataSource, Artist>
         get() = viewModel
 
     override fun onCreateInitViewModel(savedInstanceState: Bundle?) {
@@ -88,9 +86,10 @@ class AlbumListFragment : BaseFragmentList<Album, AlbumDataSource>(R.layout.frag
          * Use this factory method to create a new instance of
          * this fragment using the provided parameters.
          *
-         * @return A new instance of fragment AlbumListFragment.
+         * @return A new instance of fragment ArtistsFragment.
          */
         @JvmStatic
-        fun newInstance() = AlbumListFragment()
+        fun newInstance() = ArtistsFragment()
     }
+
 }
