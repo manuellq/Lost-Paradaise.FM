@@ -22,7 +22,11 @@ data class ArtistDTO(
     @Json(name = "mbid")
     val bid: String?,
     @Json(name = "image")
-    val images: List<ImageDto>?
+    val images: List<ImageDto>?,
+    @Json(name = "similar")
+    val similar: SimilarDTO?,
+    @Json(name = "bio")
+    val bio: BioDTO?
 ) : BaseDto<Artist> {
 
     override fun unwrapDto(): Artist {
@@ -33,7 +37,7 @@ data class ArtistDTO(
             }
         }
 
-        return Artist(name, listeners, url, streamable, bid, imageList)
+        return Artist(name, listeners, url, streamable, bid, imageList, similar?.unwrapDto(), bio?.unwrapDto())
     }
 
 }

@@ -1,8 +1,6 @@
 package com.mlcorrea.domain.repository
 
-import com.mlcorrea.domain.model.AlbumPage
-import com.mlcorrea.domain.model.ArtistPage
-import com.mlcorrea.domain.model.TrackPage
+import com.mlcorrea.domain.model.*
 import io.reactivex.Observable
 
 /**
@@ -15,5 +13,9 @@ interface PlatformRepository {
     fun getArtists(artist: String, page: String, limit: String): Observable<ArtistPage>
 
     fun getTracks(track: String, page: String, limit: String): Observable<TrackPage>
+
+    fun getAlbumInfo(artist: String, album: String): Observable<Album>
+
+    fun getArtistInfo(artist: String): Observable<Artist>
 
 }

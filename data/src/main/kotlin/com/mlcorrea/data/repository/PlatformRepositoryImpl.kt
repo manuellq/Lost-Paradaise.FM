@@ -3,10 +3,10 @@ package com.mlcorrea.data.repository
 import com.mlcorrea.data.dto.AlbumsResponseDTO
 import com.mlcorrea.data.dto.ArtistsResponseDTO
 import com.mlcorrea.data.dto.TracksResponseDTO
+import com.mlcorrea.data.dto.model.AlbumDto
+import com.mlcorrea.data.dto.model.ArtistDTO
 import com.mlcorrea.data.network.ApiController
-import com.mlcorrea.domain.model.AlbumPage
-import com.mlcorrea.domain.model.ArtistPage
-import com.mlcorrea.domain.model.TrackPage
+import com.mlcorrea.domain.model.*
 import com.mlcorrea.domain.repository.PlatformRepository
 import io.reactivex.Observable
 
@@ -14,7 +14,6 @@ import io.reactivex.Observable
  * Created by manuel on 06/04/19
  */
 class PlatformRepositoryImpl constructor(private val apiController: ApiController) : PlatformRepository {
-
 
     override fun getAlbums(album: String, page: String, limit: String): Observable<AlbumPage> {
         return apiController.getAlbums(album, page, limit)
@@ -36,4 +35,19 @@ class PlatformRepositoryImpl constructor(private val apiController: ApiControlle
                 response.unwrapDto()
             }
     }
+
+    override fun getAlbumInfo(artist: String, album: String): Observable<Album> {
+        return apiController.getAlbumInfo(artist, album)
+            .map { response: AlbumDto ->
+                response.unwrapDto()
+            }
+    }
+
+    override fun getArtistInfo(artist: String): Observable<Artist> {
+        return apiController.getArtistInfo(artist)
+            .map { response: ArtistDTO ->
+                response.unwrapDto()
+            }
+    }
+
 }

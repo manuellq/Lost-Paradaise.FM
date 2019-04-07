@@ -18,7 +18,7 @@ interface ApiService {
     fun getAlbums(@Query("album") album: String, @Query("limit") limit: String, @Query("page") page: String): Observable<NetworkResponseDTO<AlbumsResponseDTO>>
 
     @GET("/2.0/?method=album.getinfo")
-    fun getAlbumInfo(@Query("artist") artist: String, @Query("album") album: String): Observable<Result<AlbumInfoResponseDTO>>
+    fun getAlbumInfo(@Query("artist") artist: String, @Query("album") album: String): Observable<AlbumInfoResponseDTO>
 
 
     //Artist
@@ -26,7 +26,7 @@ interface ApiService {
     fun getArtists(@Query("artist") artist: String, @Query("limit") limit: String, @Query("page") page: String):  Observable<NetworkResponseDTO<ArtistsResponseDTO>>
 
     @GET("/2.0/?method=artist.getinfo")
-    fun getArtistInfo(@Query("artist") artist: String): Observable<Result<ArtistInfoResponseDTO>>
+    fun getArtistInfo(@Query("artist") artist: String): Observable<ArtistInfoResponseDTO>
 
 
     //Tracks
