@@ -37,6 +37,7 @@ support.recyclerview = "androidx.recyclerview:recyclerview:$versions.support"
 support.cardview = "androidx.cardview:cardview:$versions.support"
 support.design = "com.google.android.material:material:$versions.material"
 support.ktx_core = "androidx.core:core-ktx:1.0.1"
+support.palette = "androidx.palette:palette:$versions.support"
 deps.support = support
 
 def lifecycle = [:]
@@ -109,10 +110,12 @@ deps.rx_binding = rx_binding
 
 //---------------------------------------------------
 
+deps.picasso = "com.squareup.picasso:picasso:2.5.2"
 deps.event_bus = "org.greenrobot:eventbus:3.0.0"
 deps.timber = "com.jakewharton.timber:timber:$versions.timber"
 deps.butter_knife_compiler = "com.jakewharton:butterknife-compiler:$versions.butter_knife"
 deps.butter_kinfe = "com.jakewharton:butterknife:$versions.butter_knife"
+deps.layout_shimmer = 'io.supercharge:shimmerlayout:2.1.0'
 
 deps.okhttp3 = "com.squareup.okhttp3:okhttp:$versions.okhttp_logging_interceptor"
 deps.okhttp_signpost = "se.akerfeldt:okhttp-signpost:$versions.okhttp_signpost"

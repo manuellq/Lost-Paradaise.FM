@@ -4,6 +4,7 @@ import com.mlcorrea.lostparadisefm.framework.retrofit.helper.ApiServiceHelperCon
 import com.mlcorrea.lostparadisefm.framework.retrofit.service.ApiService
 import retrofit2.Retrofit
 import javax.inject.Inject
+import javax.inject.Named
 import javax.inject.Singleton
 
 /**

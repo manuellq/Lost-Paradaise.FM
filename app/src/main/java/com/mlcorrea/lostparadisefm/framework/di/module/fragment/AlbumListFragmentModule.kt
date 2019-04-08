@@ -3,7 +3,7 @@ package com.mlcorrea.lostparadisefm.framework.di.module.fragment
 import androidx.fragment.app.Fragment
 import com.mlcorrea.lostparadisefm.framework.di.module.base.BaseFragmentModule
 import com.mlcorrea.lostparadisefm.framework.di.scope.PerFragment
-import com.mlcorrea.lostparadisefm.ui.album.albums.AlbumListFragment
+import com.mlcorrea.lostparadisefm.ui.feature.album.albums.AlbumListFragment
 import dagger.Binds
 import dagger.Module
 

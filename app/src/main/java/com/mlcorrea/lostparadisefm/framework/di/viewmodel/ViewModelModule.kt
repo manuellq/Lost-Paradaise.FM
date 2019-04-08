@@ -2,7 +2,13 @@ package com.mlcorrea.lostparadisefm.framework.di.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.mlcorrea.lostparadisefm.ui.album.albums.AlbumListVM
+import com.mlcorrea.lostparadisefm.ui.feature.album.albuminfo.AlbumInfoVM
+import com.mlcorrea.lostparadisefm.ui.feature.album.albums.AlbumListVM
+import com.mlcorrea.lostparadisefm.ui.feature.artist.artistinfo.ArtistInfoVM
+import com.mlcorrea.lostparadisefm.ui.feature.artist.artists.ArtistListVM
+import com.mlcorrea.lostparadisefm.ui.feature.home.MainActivityVM
+import com.mlcorrea.lostparadisefm.ui.feature.track.trackinfo.TrackInfoVM
+import com.mlcorrea.lostparadisefm.ui.feature.track.tracks.TrackListVM
 import dagger.Binds
 import dagger.Module
 import dagger.multibindings.IntoMap
@@ -20,5 +26,35 @@ abstract class ViewModelModule {
     @IntoMap
     @ViewModelKey(AlbumListVM::class)
     abstract fun bindsAlbumListVM(albumListVM: AlbumListVM): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(MainActivityVM::class)
+    abstract fun bindsMainActivityVM(mainActivityVM: MainActivityVM): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(ArtistListVM::class)
+    abstract fun bindsArtistListVM(artistListVM: ArtistListVM): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(TrackListVM::class)
+    abstract fun bindsTrackListVM(trackListVM: TrackListVM): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(AlbumInfoVM::class)
+    abstract fun bindsAlbumInfoVM(albumInfoVM: AlbumInfoVM): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(ArtistInfoVM::class)
+    abstract fun bindsArtistInfoVM(artistInfoVM: ArtistInfoVM): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(TrackInfoVM::class)
+    abstract fun bindsTrackInfoVM(trackInfoVM: TrackInfoVM): ViewModel
 
 }
