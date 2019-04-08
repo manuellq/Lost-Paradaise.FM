@@ -1,4 +1,4 @@
-package com.mlcorrea.lostparadisefm.ui.feature.artist.adapter
+package com.mlcorrea.lostparadisefm.ui.feature.artist.artists.adapter
 
 import android.view.View
 import android.widget.ImageView

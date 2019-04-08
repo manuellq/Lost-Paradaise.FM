@@ -1,4 +1,4 @@
-package com.mlcorrea.lostparadisefm.ui.feature.artist.adapter
+package com.mlcorrea.lostparadisefm.ui.feature.artist.artists.adapter
 
 import androidx.paging.DataSource
 import com.mlcorrea.domain.iteractor.artist.GetArtist

@@ -11,7 +11,7 @@ import com.squareup.moshi.JsonClass
  */
 @JsonClass(generateAdapter = true)
 data class ArtistInfoResponseDTO(
-    @Json(name = "album")
+    @Json(name = "artist")
     val data: ArtistDTO?,
     @Json(name = "error")
     val error: Int?,

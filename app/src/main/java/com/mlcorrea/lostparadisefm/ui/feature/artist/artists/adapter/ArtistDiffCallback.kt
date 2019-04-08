@@ -1,4 +1,4 @@
-package com.mlcorrea.lostparadisefm.ui.feature.artist.adapter
+package com.mlcorrea.lostparadisefm.ui.feature.artist.artists.adapter
 
 import androidx.recyclerview.widget.DiffUtil
 import com.mlcorrea.domain.model.Artist

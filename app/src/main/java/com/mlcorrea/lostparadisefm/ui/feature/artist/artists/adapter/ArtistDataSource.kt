@@ -1,4 +1,4 @@
-package com.mlcorrea.lostparadisefm.ui.feature.artist.adapter
+package com.mlcorrea.lostparadisefm.ui.feature.artist.artists.adapter
 
 import com.mlcorrea.domain.iteractor.artist.GetArtist
 import com.mlcorrea.domain.model.ArtistPage

@@ -1,10 +1,10 @@
-package com.mlcorrea.lostparadisefm.ui.feature.artist
+package com.mlcorrea.lostparadisefm.ui.feature.artist.artists
 
 import com.mlcorrea.domain.iteractor.artist.GetArtist
 import com.mlcorrea.domain.model.Artist
 import com.mlcorrea.lostparadisefm.ui.base.BaseViewModelPage
-import com.mlcorrea.lostparadisefm.ui.feature.artist.adapter.ArtistDataSource
-import com.mlcorrea.lostparadisefm.ui.feature.artist.adapter.ArtistDataSourceFactory
+import com.mlcorrea.lostparadisefm.ui.feature.artist.artists.adapter.ArtistDataSource
+import com.mlcorrea.lostparadisefm.ui.feature.artist.artists.adapter.ArtistDataSourceFactory
 import javax.inject.Inject
 
 /**

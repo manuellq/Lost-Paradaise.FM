@@ -18,6 +18,8 @@
     <color name="red">#D81B60</color>
 
     <color name="black">#202221</color>
+    <color name="black_translucent">#87202221</color>
+
 
     <color name="material_grey300">#ffe0e0e0</color>
 </resources>

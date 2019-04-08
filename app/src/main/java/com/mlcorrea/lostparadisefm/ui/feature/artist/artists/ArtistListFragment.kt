@@ -1,4 +1,4 @@
-package com.mlcorrea.lostparadisefm.ui.feature.artist
+package com.mlcorrea.lostparadisefm.ui.feature.artist.artists
 
 
 import android.app.Fragment
@@ -6,20 +6,21 @@ import android.os.Bundle
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.GridLayoutManager
+import com.mlcorrea.domain.enum.TypeImage
 import com.mlcorrea.domain.model.Artist
 import com.mlcorrea.lostparadisefm.R
 import com.mlcorrea.lostparadisefm.framework.extension.viewModelInit
 import com.mlcorrea.lostparadisefm.ui.base.BaseFragmentList
 import com.mlcorrea.lostparadisefm.ui.base.BaseViewModelPage
-import com.mlcorrea.lostparadisefm.ui.feature.album.albums.adapter.AlbumDiffCallback
-import com.mlcorrea.lostparadisefm.ui.feature.album.albums.adapter.AlbumViewRender
-import com.mlcorrea.lostparadisefm.ui.feature.artist.adapter.ArtistDataSource
-import com.mlcorrea.lostparadisefm.ui.feature.artist.adapter.ArtistDiffCallback
-import com.mlcorrea.lostparadisefm.ui.feature.artist.adapter.ArtistViewRender
+import com.mlcorrea.lostparadisefm.ui.feature.artist.artistinfo.ArtistInfoActivity
+import com.mlcorrea.lostparadisefm.ui.feature.artist.artists.adapter.ArtistDataSource
+import com.mlcorrea.lostparadisefm.ui.feature.artist.artists.adapter.ArtistDiffCallback
+import com.mlcorrea.lostparadisefm.ui.feature.artist.artists.adapter.ArtistViewRender
 import com.mlcorrea.lostparadisefm.ui.feature.home.MainActivity
 import com.mlcorrea.lostparadisefm.ui.feature.home.MainActivityVM
 import com.mlcorrea.lostparadisefm.ui.renders.RendererRecyclerViewPagedAdapter
 import com.mlcorrea.lostparadisefm.ui.renders.baserenders.LoadMoreViewRender
+import com.mlcorrea.lostparadisefm.ui.utils.getUrlImage
 
 
 /**
@@ -54,7 +55,16 @@ class ArtistsFragment : BaseFragmentList<Artist, ArtistDataSource>(R.layout.frag
             )
 
         renderRecyclerView.registerRenderer(
-           ArtistViewRender { view, artist -> }
+            ArtistViewRender { view, artist ->
+                activity?.let {
+                    val intent = ArtistInfoActivity.newIntent(
+                        it,
+                        artist.name,
+                        artist.images.getUrlImage(TypeImage.MEDIUM)
+                    )
+                    startActivity(intent)
+                }
+            }
         )
 
         val gridLayout = GridLayoutManager(context, 1)
