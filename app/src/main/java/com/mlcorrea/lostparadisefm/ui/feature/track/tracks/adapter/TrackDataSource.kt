@@ -1,4 +1,4 @@
-package com.mlcorrea.lostparadisefm.ui.feature.track.adapter
+package com.mlcorrea.lostparadisefm.ui.feature.track.tracks.adapter
 
 import com.mlcorrea.domain.iteractor.track.GetTracks
 import com.mlcorrea.domain.model.TrackPage

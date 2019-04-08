@@ -35,7 +35,7 @@ data class TrackDTO(
             }
         }
 
-        return Track(name, artist, url, listeners, imageList, duration, attr?.rank)
+        return Track(name, artist, url, listeners, imageList, duration, attr?.rank, null, null)
     }
 
 }

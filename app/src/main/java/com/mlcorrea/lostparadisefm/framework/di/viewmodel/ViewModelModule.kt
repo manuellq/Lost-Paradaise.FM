@@ -7,7 +7,8 @@ import com.mlcorrea.lostparadisefm.ui.feature.album.albums.AlbumListVM
 import com.mlcorrea.lostparadisefm.ui.feature.artist.artistinfo.ArtistInfoVM
 import com.mlcorrea.lostparadisefm.ui.feature.artist.artists.ArtistListVM
 import com.mlcorrea.lostparadisefm.ui.feature.home.MainActivityVM
-import com.mlcorrea.lostparadisefm.ui.feature.track.TrackListVM
+import com.mlcorrea.lostparadisefm.ui.feature.track.trackinfo.TrackInfoVM
+import com.mlcorrea.lostparadisefm.ui.feature.track.tracks.TrackListVM
 import dagger.Binds
 import dagger.Module
 import dagger.multibindings.IntoMap
@@ -51,5 +52,9 @@ abstract class ViewModelModule {
     @ViewModelKey(ArtistInfoVM::class)
     abstract fun bindsArtistInfoVM(artistInfoVM: ArtistInfoVM): ViewModel
 
+    @Binds
+    @IntoMap
+    @ViewModelKey(TrackInfoVM::class)
+    abstract fun bindsTrackInfoVM(trackInfoVM: TrackInfoVM): ViewModel
 
 }

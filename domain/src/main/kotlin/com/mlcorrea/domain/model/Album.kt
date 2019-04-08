@@ -8,6 +8,7 @@ import com.mlcorrea.domain.model.adapter.ViewModelData
 data class Album(
     val name: String,
     val artist: String?,
+    val title: String?,
     val url: String?,
     val streamable: String?,
     val bid: String?,

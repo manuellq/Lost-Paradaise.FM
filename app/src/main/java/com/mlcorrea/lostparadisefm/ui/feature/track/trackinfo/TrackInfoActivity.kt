@@ -1,30 +1,26 @@
-package com.mlcorrea.lostparadisefm.ui.feature.artist.artistinfo
+package com.mlcorrea.lostparadisefm.ui.feature.track.trackinfo
 
 import android.content.Context
 import android.content.Intent
 import android.graphics.drawable.BitmapDrawable
 import android.os.Bundle
+import android.view.View
 import android.widget.ImageView
+import android.widget.ProgressBar
+import android.widget.TextView
+import androidx.cardview.widget.CardView
+import androidx.constraintlayout.widget.Group
 import androidx.core.content.ContextCompat
 import androidx.palette.graphics.Palette
-import androidx.recyclerview.widget.DefaultItemAnimator
-import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import butterknife.BindView
 import butterknife.ButterKnife
 import com.google.android.material.appbar.CollapsingToolbarLayout
-import com.mlcorrea.domain.model.Artist
-import com.mlcorrea.domain.model.adapter.ViewModelData
+import com.mlcorrea.domain.model.Track
 import com.mlcorrea.domain.model.response.ResponseRx
-import com.mlcorrea.domain.network.NetworkRequestState
 import com.mlcorrea.lostparadisefm.R
 import com.mlcorrea.lostparadisefm.framework.extension.observe
 import com.mlcorrea.lostparadisefm.framework.extension.viewModelInit
 import com.mlcorrea.lostparadisefm.ui.base.BaseActivity
-import com.mlcorrea.lostparadisefm.ui.feature.artist.artistinfo.adapter.ArtistInfoComparator
-import com.mlcorrea.lostparadisefm.ui.feature.artist.artistinfo.adapter.ArtistInfoViewRender
-import com.mlcorrea.lostparadisefm.ui.renders.RendererRecyclerViewSortedAdapter
-import com.mlcorrea.lostparadisefm.ui.renders.diffutils.SortedListComparatorWrapper
 import com.squareup.picasso.Callback
 import com.squareup.picasso.Picasso
 import org.jetbrains.anko.alert
@@ -32,74 +28,85 @@ import org.jetbrains.anko.appcompat.v7.Appcompat
 import org.jetbrains.anko.cancelButton
 import org.jetbrains.anko.okButton
 
-class ArtistInfoActivity : BaseActivity() {
+class TrackInfoActivity : BaseActivity() {
 
-    @BindView(R.id.ui_image_artist)
+
+    @BindView(R.id.ui_image_track)
     lateinit var uiImage: ImageView
     @BindView(R.id.ui_collapsing_toolbar)
     lateinit var uiCollapsingToolbar: CollapsingToolbarLayout
-    @BindView(R.id.ui_recycler_view)
-    lateinit var uiRecyclerView: RecyclerView
+
+    @BindView(R.id.group_text)
+    lateinit var uiGroup: Group
+    @BindView(R.id.ui_progress_bar)
+    lateinit var uiProgressBar: ProgressBar
+
+    @BindView(R.id.text_title_input)
+    lateinit var uiTextTitle: TextView
+    @BindView(R.id.text_artist_input)
+    lateinit var uiTextArtist: TextView
+    @BindView(R.id.text_title)
+    lateinit var uiTitle: TextView
+
+    @BindView(R.id.text_summary)
+    lateinit var uiSummary: TextView
+    @BindView(R.id.text_content)
+    lateinit var uiContent: TextView
 
 
-    private lateinit var viewModel: ArtistInfoVM
-    private lateinit var renderRecyclerView: RendererRecyclerViewSortedAdapter
+    @BindView(R.id.ui_card)
+    lateinit var uiCardView: CardView
+
+
+    private lateinit var viewModel: TrackInfoVM
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_artist_info)
+        setContentView(R.layout.activity_track_info)
         ButterKnife.bind(this)
         setupToolbar()
-        initViews()
         viewModel = viewModelInit(viewModelFactoryBis) {
-            observe(networkState, ::handleNetwork)
-            observe(artistData, ::handleResponse)
+            observe(trackData, ::handleResponse)
         }
-
         intent.extras?.let {
             val artist = it.getString(INTENT_EXTRA_ARTIST)
-            val image =
-                if (it.containsKey(INTENT_EXTRA_IMAGE)) it.getString(INTENT_EXTRA_IMAGE) else null
-            if (artist == null) {
+            val track = it.getString(INTENT_EXTRA_TRACK)
+            val image = if (it.containsKey(INTENT_EXTRA_IMAGE)) it.getString(INTENT_EXTRA_IMAGE) else null
+            if (artist == null || track == null) {
                 finish()
             } else {
-                updateUI(artist, image)
-                viewModel.initVM(artist)
+                updateUI(track, image)
+                viewModel.initVM(artist, track)
             }
         }
     }
 
-    private fun handleNetwork(networkRequestState: NetworkRequestState?) {
-        renderRecyclerView.setNetworkState(networkRequestState)
-    }
-
-    private fun initViews() {
-
-        renderRecyclerView = RendererRecyclerViewSortedAdapter()
-        val sortedListComparatorWrapper: SortedListComparatorWrapper<ViewModelData>
-        sortedListComparatorWrapper = ArtistInfoComparator(renderRecyclerView)
-        renderRecyclerView.setComparatorWrapper(sortedListComparatorWrapper)
-        renderRecyclerView.registerRenderer(ArtistInfoViewRender())
-
-        val gridLayout = GridLayoutManager(this, 3)
-        uiRecyclerView.layoutManager = gridLayout
-        uiRecyclerView.itemAnimator = DefaultItemAnimator()
-        uiRecyclerView.setHasFixedSize(true)
-        uiRecyclerView.adapter = renderRecyclerView
-    }
-
-    private fun handleResponse(responseRx: ResponseRx<Artist>?) {
+    private fun handleResponse(responseRx: ResponseRx<Track>?) {
         when (responseRx) {
-            is ResponseRx.Loading -> {
-                //
+            is ResponseRx.Loading -> progressBarStatus(true)
+            is ResponseRx.Error -> {
+                uiCardView.visibility = View.GONE
+                displayErrorAlert(responseRx.exception)
             }
-            is ResponseRx.Error -> displayErrorAlert(responseRx.exception)
             is ResponseRx.Success -> {
-                responseRx.data?.similar?.artists?.let {
-                    renderRecyclerView.removeAll(it as List<ViewModelData>)
-                }
+                progressBarStatus(false)
+                uiTextTitle.text = responseRx.data?.album?.title
+                val isTitle = responseRx.data?.album?.title.isNullOrEmpty()
+                uiTextTitle.visibility = if (isTitle) View.GONE else View.VISIBLE
+                uiTitle.visibility = if (isTitle) View.GONE else View.VISIBLE
+                uiTextArtist.text = responseRx.data?.artist
+                uiSummary.text = responseRx.data?.wiki?.summary
+                uiSummary.visibility = if (responseRx.data?.wiki?.summary.isNullOrEmpty()) View.GONE else View.VISIBLE
+                uiContent.text = responseRx.data?.wiki?.content
+                uiContent.visibility = if (responseRx.data?.wiki?.content.isNullOrEmpty()) View.GONE else View.VISIBLE
             }
         }
+    }
+
+    private fun progressBarStatus(visible: Boolean) {
+        uiCardView.visibility = View.VISIBLE
+        uiProgressBar.visibility = if (visible) View.VISIBLE else View.GONE
+        uiGroup.visibility = if (visible) View.GONE else View.VISIBLE
     }
 
     private fun displayErrorAlert(error: Exception) {
@@ -110,12 +117,8 @@ class ArtistInfoActivity : BaseActivity() {
             .setCancelable(false)
     }
 
-    private fun setupToolbar() {
-        setToolbar()
-    }
-
-    private fun updateUI(artist: String?, image: String?) {
-        setTitleToolBar(artist)
+    private fun updateUI(track: String?, image: String?) {
+        setTitleToolBar(track)
         if (image != null && image.isNotBlank() && image.isNotEmpty()) {
             Picasso.with(this)
                 .load(image)
@@ -139,6 +142,10 @@ class ArtistInfoActivity : BaseActivity() {
         }
     }
 
+    private fun setupToolbar() {
+        setToolbar()
+    }
+
     private fun applyPalette(palette: Palette) {
         val primaryDark = ContextCompat.getColor(this, R.color.colorPrimaryDark)
         val primary = ContextCompat.getColor(this, R.color.colorPrimary)
@@ -149,12 +156,14 @@ class ArtistInfoActivity : BaseActivity() {
 
     companion object {
         private const val INTENT_EXTRA_ARTIST = "INTENT_EXTRA_ARTIST"
+        private const val INTENT_EXTRA_TRACK = "INTENT_EXTRA_TRACK"
         private const val INTENT_EXTRA_IMAGE = "INTENT_EXTRA_IMAGE"
 
         @JvmStatic
-        fun newIntent(context: Context, artist: String, image: String?): Intent {
-            return Intent(context, ArtistInfoActivity::class.java).apply {
+        fun newIntent(context: Context, artist: String, track: String, image: String?): Intent {
+            return Intent(context, TrackInfoActivity::class.java).apply {
                 putExtra(INTENT_EXTRA_ARTIST, artist)
+                putExtra(INTENT_EXTRA_TRACK, track)
                 image?.let {
                     putExtra(INTENT_EXTRA_IMAGE, image)
                 }

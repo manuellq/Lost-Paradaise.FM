@@ -12,5 +12,7 @@ data class Track(
     val listeners: String?,
     val images: List<Image>,
     val duration: String?,
-    val rank: Int?
+    val rank: Int?,
+    val album: Album?,
+    val wiki: Wiki?
 ) : ViewModelData

@@ -1,10 +1,10 @@
-package com.mlcorrea.lostparadisefm.ui.feature.track
+package com.mlcorrea.lostparadisefm.ui.feature.track.tracks
 
 import com.mlcorrea.domain.iteractor.track.GetTracks
 import com.mlcorrea.domain.model.Track
 import com.mlcorrea.lostparadisefm.ui.base.BaseViewModelPage
-import com.mlcorrea.lostparadisefm.ui.feature.track.adapter.TrackDataSource
-import com.mlcorrea.lostparadisefm.ui.feature.track.adapter.TrackDataSourceFactory
+import com.mlcorrea.lostparadisefm.ui.feature.track.tracks.adapter.TrackDataSource
+import com.mlcorrea.lostparadisefm.ui.feature.track.tracks.adapter.TrackDataSourceFactory
 import javax.inject.Inject
 
 /**

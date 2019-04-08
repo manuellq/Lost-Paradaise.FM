@@ -1,11 +1,10 @@
-package com.mlcorrea.lostparadisefm.ui.feature.track.adapter
+package com.mlcorrea.lostparadisefm.ui.feature.track.tracks.adapter
 
 import android.annotation.SuppressLint
 import android.view.View
 import android.view.ViewGroup
 import com.jakewharton.rxbinding2.view.RxView
 import com.mlcorrea.domain.enum.TypeImage
-import com.mlcorrea.domain.model.Image
 import com.mlcorrea.domain.model.Track
 import com.mlcorrea.lostparadisefm.R
 import com.mlcorrea.lostparadisefm.ui.renders.ViewRenderer

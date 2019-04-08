@@ -24,7 +24,9 @@ class TrackAlbumDTO(
     @Json(name = "duration")
     val duration: String?,
     @Json(name = "@attr")
-    val attr: AttrDTO?
+    val attr: AttrDTO?,
+    @Json(name = "album")
+    val album: AlbumDto?
 ) : BaseDto<Track> {
 
     override fun unwrapDto(): Track {
@@ -35,6 +37,6 @@ class TrackAlbumDTO(
             }
         }
 
-        return Track(name, artist?.name, url, listeners, imageList, duration, attr?.rank)
+        return Track(name, artist?.name, url, listeners, imageList, duration, attr?.rank, album?.unwrapDto(), null)
     }
 }

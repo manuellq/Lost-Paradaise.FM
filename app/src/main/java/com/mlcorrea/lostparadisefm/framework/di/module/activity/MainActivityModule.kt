@@ -10,7 +10,7 @@ import com.mlcorrea.lostparadisefm.framework.di.scope.PerFragment
 import com.mlcorrea.lostparadisefm.ui.feature.album.albums.AlbumListFragment
 import com.mlcorrea.lostparadisefm.ui.feature.artist.artists.ArtistsFragment
 import com.mlcorrea.lostparadisefm.ui.feature.home.MainActivity
-import com.mlcorrea.lostparadisefm.ui.feature.track.TrackListFragment
+import com.mlcorrea.lostparadisefm.ui.feature.track.tracks.TrackListFragment
 import dagger.Binds
 import dagger.Module
 import dagger.android.ContributesAndroidInjector

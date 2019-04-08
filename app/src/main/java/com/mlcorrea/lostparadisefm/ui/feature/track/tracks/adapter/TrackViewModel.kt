@@ -1,4 +1,4 @@
-package com.mlcorrea.lostparadisefm.ui.feature.track.adapter
+package com.mlcorrea.lostparadisefm.ui.feature.track.tracks.adapter
 
 import android.view.View
 import android.widget.ImageView

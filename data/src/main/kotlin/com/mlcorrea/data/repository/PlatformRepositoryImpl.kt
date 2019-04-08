@@ -5,6 +5,7 @@ import com.mlcorrea.data.dto.ArtistsResponseDTO
 import com.mlcorrea.data.dto.TracksResponseDTO
 import com.mlcorrea.data.dto.model.AlbumDto
 import com.mlcorrea.data.dto.model.ArtistDTO
+import com.mlcorrea.data.dto.model.TrackInfoDTO
 import com.mlcorrea.data.network.ApiController
 import com.mlcorrea.domain.model.*
 import com.mlcorrea.domain.repository.PlatformRepository
@@ -50,4 +51,10 @@ class PlatformRepositoryImpl constructor(private val apiController: ApiControlle
             }
     }
 
+    override fun getTrackInfo(artist: String, track: String): Observable<Track> {
+        return apiController.getTrackInfo(artist, track)
+            .map { response: TrackInfoDTO ->
+                response.unwrapDto()
+            }
+    }
 }

@@ -34,6 +34,6 @@ interface ApiService {
     fun getTracks(@Query("track") track: String, @Query("limit") limit: String, @Query("page") page: String): Observable<NetworkResponseDTO<TracksResponseDTO>>
 
     @GET("/2.0/?method=track.getInfo")
-    fun getTrackInfo(@Query("track") track: String, @Query("artist") artist: String): Observable<Result<TrackInfoResponseDTO>>
+    fun getTrackInfo(@Query("track") track: String, @Query("artist") artist: String): Observable<TrackInfoResponseDTO>
 
 }

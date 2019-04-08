@@ -1,37 +1,37 @@
 package com.mlcorrea.data.dto.model
 
 import com.mlcorrea.data.dto.base.BaseDto
-import com.mlcorrea.domain.model.Album
 import com.mlcorrea.domain.model.Image
+import com.mlcorrea.domain.model.Track
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 
 /**
- * Created by manuel on 07/04/19
+ * Created by manuel on 08/04/19
  */
 @JsonClass(generateAdapter = true)
-data class AlbumDto(
+data class TrackInfoDTO(
     @Json(name = "name")
-    val name: String?,
+    val name: String,
     @Json(name = "artist")
-    val artist: String?,
-    @Json(name = "title")
-    val title: String?,
+    val artist: ArtistDTO?,
     @Json(name = "url")
     val url: String?,
-    @Json(name = "streamable")
-    val streamable: String?,
-    @Json(name = "mbid")
-    val bid: String?,
+    @Json(name = "listeners")
+    val listeners: String?,
     @Json(name = "image")
     val images: List<ImageDto>?,
-    @Json(name = "tracks")
-    val tracks: TracksDto?,
+    @Json(name = "duration")
+    val duration: String?,
+    @Json(name = "@attr")
+    val attr: AttrDTO?,
+    @Json(name = "album")
+    val album: AlbumDto?,
     @Json(name = "wiki")
     val wiki: WikiDTO?
-) : BaseDto<Album> {
+) : BaseDto<Track> {
 
-    override fun unwrapDto(): Album {
+    override fun unwrapDto(): Track {
         val imageList: MutableList<Image> = mutableListOf()
         images?.let {
             for (image in it) {
@@ -39,15 +39,15 @@ data class AlbumDto(
             }
         }
 
-        return Album(
-            name ?: "",
-            artist,
-            title,
+        return Track(
+            name,
+            artist?.name,
             url,
-            streamable,
-            bid,
+            listeners,
             imageList,
-            tracks?.unwrapDto() ?: emptyList(),
+            duration,
+            attr?.rank,
+            album?.unwrapDto(),
             wiki?.unwrapDto()
         )
     }

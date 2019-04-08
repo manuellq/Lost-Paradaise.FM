@@ -12,7 +12,7 @@ import com.mlcorrea.lostparadisefm.framework.extension.viewModelInit
 import com.mlcorrea.lostparadisefm.ui.base.BaseActivity
 import com.mlcorrea.lostparadisefm.ui.feature.album.albums.AlbumListFragment
 import com.mlcorrea.lostparadisefm.ui.feature.artist.artists.ArtistsFragment
-import com.mlcorrea.lostparadisefm.ui.feature.track.TrackListFragment
+import com.mlcorrea.lostparadisefm.ui.feature.track.tracks.TrackListFragment
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import java.util.concurrent.TimeUnit

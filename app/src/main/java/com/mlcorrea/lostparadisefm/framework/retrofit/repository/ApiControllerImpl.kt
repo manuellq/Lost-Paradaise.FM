@@ -4,6 +4,7 @@ import com.mlcorrea.data.dto.*
 import com.mlcorrea.data.dto.base.NetworkResponseDTO
 import com.mlcorrea.data.dto.model.AlbumDto
 import com.mlcorrea.data.dto.model.ArtistDTO
+import com.mlcorrea.data.dto.model.TrackInfoDTO
 import com.mlcorrea.data.network.ApiController
 import com.mlcorrea.domain.exception.APIError
 import com.mlcorrea.lostparadisefm.framework.retrofit.apimanager.ApiManager
@@ -71,4 +72,14 @@ class ApiControllerImpl(private val apiManager: ApiManager) :
             }
     }
 
+    override fun getTrackInfo(artist: String, track: String): Observable<TrackInfoDTO> {
+        return apiManager.apiServices.getTrackInfo(track, artist)
+            .map { response: TrackInfoResponseDTO ->
+                return@map if (response.data == null) {
+                    throw APIError(response.error, response.message)
+                } else {
+                    response.data
+                }
+            }
+    }
 }

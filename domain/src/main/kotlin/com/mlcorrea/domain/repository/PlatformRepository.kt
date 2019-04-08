@@ -18,4 +18,6 @@ interface PlatformRepository {
 
     fun getArtistInfo(artist: String): Observable<Artist>
 
+    fun getTrackInfo(artist: String, track: String): Observable<Track>
+
 }

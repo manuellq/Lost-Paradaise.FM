@@ -1,4 +1,4 @@
-package com.mlcorrea.lostparadisefm.ui.feature.track
+package com.mlcorrea.lostparadisefm.ui.feature.track.tracks
 
 
 import android.app.Fragment
@@ -6,6 +6,7 @@ import android.os.Bundle
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.GridLayoutManager
+import com.mlcorrea.domain.enum.TypeImage
 import com.mlcorrea.domain.model.Track
 import com.mlcorrea.lostparadisefm.R
 import com.mlcorrea.lostparadisefm.framework.extension.viewModelInit
@@ -13,11 +14,13 @@ import com.mlcorrea.lostparadisefm.ui.base.BaseFragmentList
 import com.mlcorrea.lostparadisefm.ui.base.BaseViewModelPage
 import com.mlcorrea.lostparadisefm.ui.feature.home.MainActivity
 import com.mlcorrea.lostparadisefm.ui.feature.home.MainActivityVM
-import com.mlcorrea.lostparadisefm.ui.feature.track.adapter.TrackDataSource
-import com.mlcorrea.lostparadisefm.ui.feature.track.adapter.TrackDiffCallback
-import com.mlcorrea.lostparadisefm.ui.feature.track.adapter.TrackViewRender
+import com.mlcorrea.lostparadisefm.ui.feature.track.trackinfo.TrackInfoActivity
+import com.mlcorrea.lostparadisefm.ui.feature.track.tracks.adapter.TrackDataSource
+import com.mlcorrea.lostparadisefm.ui.feature.track.tracks.adapter.TrackDiffCallback
+import com.mlcorrea.lostparadisefm.ui.feature.track.tracks.adapter.TrackViewRender
 import com.mlcorrea.lostparadisefm.ui.renders.RendererRecyclerViewPagedAdapter
 import com.mlcorrea.lostparadisefm.ui.renders.baserenders.LoadMoreViewRender
+import com.mlcorrea.lostparadisefm.ui.utils.getUrlImage
 
 
 /**
@@ -51,7 +54,17 @@ class TrackListFragment : BaseFragmentList<Track, TrackDataSource>(R.layout.frag
             )
 
         renderRecyclerView.registerRenderer(
-            TrackViewRender { view, track -> }
+            TrackViewRender { view, track ->
+                activity?.let {
+                    val intent = TrackInfoActivity.newIntent(
+                        it,
+                        track.artist ?: " ",
+                        track.name,
+                        track.images.getUrlImage(TypeImage.EXTRA_LARGE)
+                    )
+                    startActivity(intent)
+                }
+            }
         )
 
         val gridLayout = GridLayoutManager(context, 1)

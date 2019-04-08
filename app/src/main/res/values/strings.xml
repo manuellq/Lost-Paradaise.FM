@@ -13,4 +13,7 @@
     <string name="exception_generic_message">There was an application error</string>
     <string name="exception_message_no_connection">There is no internet connection</string>
     <string name="title_activity_artist_info">ArtistInfoActivity</string>
+    <string name="title_activity_track_info">TrackInfoActivity</string>
+    <string name="text_artist">Artist</string>
+    <string name="text_title">Title</string>
 </resources>
