@@ -119,7 +119,7 @@ internal class ApiModule {
 
     @Provides
     @Singleton
-    fun providePlatformRepository(apiManager: ApiManager): PlatformRepository {
-        return Injection.providePlatformRepositoryImpl(apiManager)
+    fun providePlatformRepository(context: App, apiManager: ApiManager): PlatformRepository {
+        return Injection.providePlatformRepositoryImpl(context, apiManager)
     }
 }
