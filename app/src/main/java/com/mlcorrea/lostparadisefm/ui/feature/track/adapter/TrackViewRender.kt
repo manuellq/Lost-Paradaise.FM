@@ -4,10 +4,12 @@ import android.annotation.SuppressLint
 import android.view.View
 import android.view.ViewGroup
 import com.jakewharton.rxbinding2.view.RxView
+import com.mlcorrea.domain.enum.TypeImage
 import com.mlcorrea.domain.model.Image
 import com.mlcorrea.domain.model.Track
 import com.mlcorrea.lostparadisefm.R
 import com.mlcorrea.lostparadisefm.ui.renders.ViewRenderer
+import com.mlcorrea.lostparadisefm.ui.utils.getUrlImage
 import com.squareup.picasso.Picasso
 import io.reactivex.android.schedulers.AndroidSchedulers
 import java.util.concurrent.TimeUnit
@@ -25,7 +27,7 @@ class TrackViewRender(private val clickListener: (View, Track) -> Unit = { _: Vi
             val context = itemView.context
             uiName.text = model.name
             uiArtist.text = model.artist
-            val image = getSmallImage(model.images)
+            val image = model.images.getUrlImage(TypeImage.MEDIUM)
             if (image != null && image.isNotEmpty()) {
                 Picasso.with(context)
                     .load(image)
@@ -51,16 +53,6 @@ class TrackViewRender(private val clickListener: (View, Track) -> Unit = { _: Vi
 
     override fun createViewHolder(parent: ViewGroup): TrackViewModel {
         return TrackViewModel(inflate(R.layout.layout_item_album, parent))
-    }
-
-    private fun getSmallImage(images: List<Image>?): String? {
-        if (images == null) return null
-        for (image in images) {
-            if (image.size == "medium") {
-                return image.text
-            }
-        }
-        return null
     }
 
 }

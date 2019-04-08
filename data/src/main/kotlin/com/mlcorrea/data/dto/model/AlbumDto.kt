@@ -23,8 +23,10 @@ data class AlbumDto(
     val bid: String?,
     @Json(name = "image")
     val images: List<ImageDto>?,
-    @Json(name = "TracksDto")
-    val tracks: TracksDto?
+    @Json(name = "tracks")
+    val tracks: TracksDto?,
+    @Json(name = "wiki")
+    val wiki: WikiDTO?
 ) : BaseDto<Album> {
 
     override fun unwrapDto(): Album {
@@ -35,7 +37,16 @@ data class AlbumDto(
             }
         }
 
-        return Album(name, artist, url, streamable, bid, imageList, tracks?.unwrapDto() ?: emptyList())
+        return Album(
+            name,
+            artist,
+            url,
+            streamable,
+            bid,
+            imageList,
+            tracks?.unwrapDto() ?: emptyList(),
+            wiki?.unwrapDto()
+        )
     }
 
 }

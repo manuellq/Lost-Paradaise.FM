@@ -7,14 +7,14 @@ import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 
 /**
- * Created by manuel on 07/04/19
+ * Created by manuel on 08/04/19
  */
 @JsonClass(generateAdapter = true)
-data class TrackDTO(
+class TrackAlbumDTO(
     @Json(name = "name")
     val name: String,
     @Json(name = "artist")
-    val artist: String?,
+    val artist: ArtistDTO?,
     @Json(name = "url")
     val url: String?,
     @Json(name = "listeners")
@@ -35,7 +35,6 @@ data class TrackDTO(
             }
         }
 
-        return Track(name, artist, url, listeners, imageList, duration, attr?.rank)
+        return Track(name, artist?.name, url, listeners, imageList, duration, attr?.rank)
     }
-
 }

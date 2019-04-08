@@ -67,7 +67,7 @@ android {
             buildConfigField("String", "API_KEY", "\"f10097c4cd58ca91a3d6d50f13c6c7ad\"")
         }
 
-        staging{
+        staging {
             applicationId build_versions_staging.application_id_staging
             versionName build_versions_staging.version_name_staging
 
@@ -111,8 +111,10 @@ dependencies {
     implementation deps.support.cardview
     implementation deps.support.design
     implementation deps.support.ktx_core
+    implementation deps.support.palette
     implementation deps.constraint_layout
     //Google lifecycle
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
     kapt deps.lifecycle.compiler
     implementation deps.lifecycle.extensions
     //Google dagger 2
@@ -164,6 +166,7 @@ dependencies {
     implementation deps.butter_kinfe
     implementation deps.timber
     implementation deps.picasso
+    implementation deps.layout_shimmer
     //------------------------------
 
     //Testing Implementation

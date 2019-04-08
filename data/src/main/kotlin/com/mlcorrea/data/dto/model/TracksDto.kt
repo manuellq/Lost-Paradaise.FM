@@ -9,7 +9,7 @@ import com.squareup.moshi.JsonClass
  * Created by manuel on 07/04/19
  */
 @JsonClass(generateAdapter = true)
-data class TracksDto(@Json(name = "tracks") val tracks: List<TrackDTO>?) : BaseDto<List<Track>> {
+data class TracksDto(@Json(name = "track") val tracks: List<TrackAlbumDTO>?) : BaseDto<List<Track>> {
 
     override fun unwrapDto(): List<Track> {
         val trackList: MutableList<Track> = mutableListOf()

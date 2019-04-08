@@ -10,6 +10,9 @@ import com.mlcorrea.domain.model.adapter.ViewModelData
 import com.mlcorrea.domain.network.NetworkRequestState
 import com.mlcorrea.lostparadisefm.R
 import com.mlcorrea.lostparadisefm.ui.renders.RendererRecyclerViewPagedAdapter
+import org.jetbrains.anko.alert
+import org.jetbrains.anko.appcompat.v7.Appcompat
+import org.jetbrains.anko.okButton
 
 /**
  * Created by manuel on 07/04/19
@@ -40,8 +43,16 @@ abstract class BaseFragmentList<T : ViewModelData, V : BaseDataSource>(
 
     private fun handlerNetwork(networkRequestState: NetworkRequestState?) {
         renderRecyclerView.setNetworkState(networkRequestState)
-        if (networkRequestState?.exception != null) {
-            //showSnackBar(getErrorMessage(networkRequestState.exception as Exception))
+        networkRequestState?.exception?.let {
+            displayErrorAlert(it as Exception)
+        }
+    }
+
+    private fun displayErrorAlert(error: Exception) {
+        activity?.apply {
+            alert(Appcompat, getErrorMessage(error)) {
+                okButton { }
+            }.show()
         }
     }
 

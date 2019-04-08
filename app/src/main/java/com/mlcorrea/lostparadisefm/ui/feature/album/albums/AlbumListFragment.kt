@@ -6,11 +6,13 @@ import android.os.Bundle
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.GridLayoutManager
+import com.mlcorrea.domain.enum.TypeImage
 import com.mlcorrea.domain.model.Album
 import com.mlcorrea.lostparadisefm.R
 import com.mlcorrea.lostparadisefm.framework.extension.viewModelInit
 import com.mlcorrea.lostparadisefm.ui.base.BaseFragmentList
 import com.mlcorrea.lostparadisefm.ui.base.BaseViewModelPage
+import com.mlcorrea.lostparadisefm.ui.feature.album.albuminfo.AlbumInfoActivity
 import com.mlcorrea.lostparadisefm.ui.feature.album.albums.adapter.AlbumDataSource
 import com.mlcorrea.lostparadisefm.ui.feature.album.albums.adapter.AlbumDiffCallback
 import com.mlcorrea.lostparadisefm.ui.feature.album.albums.adapter.AlbumViewRender
@@ -18,6 +20,7 @@ import com.mlcorrea.lostparadisefm.ui.feature.home.MainActivity
 import com.mlcorrea.lostparadisefm.ui.feature.home.MainActivityVM
 import com.mlcorrea.lostparadisefm.ui.renders.RendererRecyclerViewPagedAdapter
 import com.mlcorrea.lostparadisefm.ui.renders.baserenders.LoadMoreViewRender
+import com.mlcorrea.lostparadisefm.ui.utils.getUrlImage
 
 
 /**
@@ -54,7 +57,17 @@ class AlbumListFragment : BaseFragmentList<Album, AlbumDataSource>(R.layout.frag
             )
 
         renderRecyclerView.registerRenderer(
-            AlbumViewRender { view, album -> }
+            AlbumViewRender { view, album ->
+                activity?.let {
+                    val intent = AlbumInfoActivity.newIntent(
+                        it,
+                        album.artist ?: " ",
+                        album.name,
+                        album.images.getUrlImage(TypeImage.EXTRA_LARGE)
+                    )
+                    startActivity(intent)
+                }
+            }
         )
 
         val gridLayout = GridLayoutManager(context, 1)

@@ -2,6 +2,7 @@ package com.mlcorrea.lostparadisefm.framework.di.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import com.mlcorrea.lostparadisefm.ui.feature.album.albuminfo.AlbumInfoVM
 import com.mlcorrea.lostparadisefm.ui.feature.album.albums.AlbumListVM
 import com.mlcorrea.lostparadisefm.ui.feature.artist.ArtistListVM
 import com.mlcorrea.lostparadisefm.ui.feature.home.MainActivityVM
@@ -38,6 +39,11 @@ abstract class ViewModelModule {
     @IntoMap
     @ViewModelKey(TrackListVM::class)
     abstract fun bindsTrackListVM(trackListVM: TrackListVM): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(AlbumInfoVM::class)
+    abstract fun bindsAlbumInfoVM(albumInfoVM: AlbumInfoVM): ViewModel
 
 
 }

@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import butterknife.ButterKnife
 import butterknife.Unbinder
+import com.mlcorrea.lostparadisefm.R
 import dagger.android.AndroidInjector
 import dagger.android.DispatchingAndroidInjector
 import dagger.android.support.AndroidSupportInjection
@@ -70,5 +71,17 @@ abstract class BaseFragment : Fragment(), HasSupportFragmentInjector {
 
     private fun injectViews(view: View) {
         this.unbinder = ButterKnife.bind(this, view)
+    }
+
+    /**
+     * Get error message from the exception
+     *
+     * @param exception [Exception]
+     * @return [String]
+     */
+    fun getErrorMessage(exception: Exception?): String {
+        return if (activity == null) {
+            getString(R.string.exception_generic_message)
+        } else (activity as BaseActivity).getUserMessageError(exception)
     }
 }

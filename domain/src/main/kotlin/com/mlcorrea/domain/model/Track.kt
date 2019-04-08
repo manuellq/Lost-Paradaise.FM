@@ -9,7 +9,8 @@ data class Track(
     val name: String,
     val artist: String?,
     val url: String?,
-    val streamable: String?,
     val listeners: String?,
-    val images: List<Image>
+    val images: List<Image>,
+    val duration: String?,
+    val rank: Int?
 ) : ViewModelData

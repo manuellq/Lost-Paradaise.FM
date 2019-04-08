@@ -12,5 +12,6 @@ data class Album(
     val streamable: String?,
     val bid: String?,
     val images: List<Image>,
-    val tracks: List<Track> = emptyList()
+    val tracks: List<Track> = emptyList(),
+    val wiki: Wiki?
 ) : ViewModelData
