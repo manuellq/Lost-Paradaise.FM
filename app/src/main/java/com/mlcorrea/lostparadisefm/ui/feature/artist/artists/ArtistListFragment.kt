@@ -20,7 +20,7 @@ import com.mlcorrea.lostparadisefm.ui.feature.home.MainActivityVM
 import com.mlcorrea.lostparadisefm.ui.renders.RendererRecyclerViewPagedAdapter
 import com.mlcorrea.lostparadisefm.ui.renders.baserenders.LoadMoreViewRender
 import com.mlcorrea.lostparadisefm.ui.utils.getUrlImage
-import org.koin.android.scope.currentScope
+import org.koin.androidx.scope.currentScope
 
 
 /**

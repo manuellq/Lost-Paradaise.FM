@@ -30,7 +30,7 @@ import org.jetbrains.anko.alert
 import org.jetbrains.anko.appcompat.v7.Appcompat
 import org.jetbrains.anko.cancelButton
 import org.jetbrains.anko.okButton
-import org.koin.android.scope.currentScope
+import org.koin.androidx.scope.currentScope
 
 class AlbumInfoActivity : BaseActivity() {
 

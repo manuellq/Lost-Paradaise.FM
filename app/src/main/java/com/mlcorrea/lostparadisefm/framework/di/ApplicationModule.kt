@@ -26,7 +26,7 @@ import com.mlcorrea.lostparadisefm.ui.feature.track.trackinfo.TrackInfoActivity
 import com.mlcorrea.lostparadisefm.ui.feature.track.trackinfo.TrackInfoVM
 import com.mlcorrea.lostparadisefm.ui.feature.track.tracks.TrackListFragment
 import com.mlcorrea.lostparadisefm.ui.feature.track.tracks.TrackListVM
-import org.koin.android.viewmodel.dsl.viewModel
+import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.core.qualifier.named
 import org.koin.dsl.module
 
@@ -54,13 +54,13 @@ val dataModule = module {
 val activityScope = module {
 
     scope(named<AlbumInfoActivity>()) {
-        viewModel { AlbumInfoVM(get()) }
         scoped { GetAlbumInfo(get(), get(), get()) }
+        viewModel { AlbumInfoVM(get()) }
     }
 
     scope(named<ArtistInfoActivity>()) {
-        viewModel { ArtistInfoVM(get()) }
         scoped { GetArtistInfo(get(), get(), get()) }
+        viewModel { ArtistInfoVM(get()) }
     }
 
     scope(named<MainActivity>()) {
@@ -68,25 +68,25 @@ val activityScope = module {
     }
 
     scope(named<TrackInfoActivity>()) {
-        viewModel { TrackInfoVM(get()) }
         scoped { GetTrackInfo(get(), get(), get()) }
+        viewModel { TrackInfoVM(get()) }
     }
 }
 
 val fragmentScope = module {
 
     scope(named<AlbumListFragment>()) {
-        viewModel { AlbumListVM(get()) }
         scoped { GetAlbums(get(), get(), get()) }
+        viewModel { AlbumListVM(get()) }
     }
 
     scope(named<ArtistsFragment>()) {
-        viewModel { ArtistListVM(get()) }
         scoped { GetArtist(get(), get(), get()) }
+        viewModel { ArtistListVM(get()) }
     }
 
     scope(named<TrackListFragment>()) {
-        viewModel { TrackListVM(get()) }
         scoped { GetTracks(get(), get(), get()) }
+        viewModel { TrackListVM(get()) }
     }
 }

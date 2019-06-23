@@ -20,6 +20,7 @@ class App : Application() {
 
     override fun onCreate() {
         super.onCreate()
+        injectApplicationComponent()
         if (LeakCanary.isInAnalyzerProcess(this)) {
             // This process is dedicated to LeakCanary for heap analysis.
             // You should not init your app in this process.
@@ -29,9 +30,7 @@ class App : Application() {
         initTimber()
         strictMode()
         initializeStetho()
-        injectApplicationComponent()
     }
-
 
     private fun injectApplicationComponent() {
         startKoin {

@@ -3,10 +3,12 @@ package com.mlcorrea.lostparadisefm.ui.feature.home
 import android.os.Bundle
 import androidx.appcompat.widget.SearchView
 import androidx.appcompat.widget.Toolbar
+import androidx.fragment.app.Fragment
 import butterknife.BindView
 import butterknife.ButterKnife
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.jakewharton.rxbinding2.support.v7.widget.RxSearchView
+import com.mlcorrea.domain.model.adapter.ViewModelData
 import com.mlcorrea.lostparadisefm.R
 import com.mlcorrea.lostparadisefm.ui.base.BaseActivity
 import com.mlcorrea.lostparadisefm.ui.feature.album.albums.AlbumListFragment
@@ -14,7 +16,8 @@ import com.mlcorrea.lostparadisefm.ui.feature.artist.artists.ArtistsFragment
 import com.mlcorrea.lostparadisefm.ui.feature.track.tracks.TrackListFragment
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
-import org.koin.android.scope.currentScope
+import org.koin.androidx.scope.currentScope
+import java.lang.reflect.Type
 import java.util.concurrent.TimeUnit
 
 class MainActivity : BaseActivity() {
@@ -68,20 +71,35 @@ class MainActivity : BaseActivity() {
 
     private val mOnNavigationItemSelectedListener =
         BottomNavigationView.OnNavigationItemSelectedListener { item ->
+            val visibleFragment = supportFragmentManager.findFragmentById(R.id.ui_main_container)
             when (item.itemId) {
                 R.id.navigation_album -> {
-                    addFragment(R.id.ui_main_container, AlbumListFragment.newInstance())
+                    if (visibleFragment !is AlbumListFragment){
+                        addFragment(R.id.ui_main_container, AlbumListFragment.newInstance())
+                    }
                     return@OnNavigationItemSelectedListener true
                 }
                 R.id.navigation_artist -> {
-                    addFragment(R.id.ui_main_container, ArtistsFragment.newInstance())
+                    if (visibleFragment !is ArtistsFragment){
+                        addFragment(R.id.ui_main_container, ArtistsFragment.newInstance())
+                    }
                     return@OnNavigationItemSelectedListener true
                 }
                 R.id.navigation_track -> {
-                    addFragment(R.id.ui_main_container, TrackListFragment.newInstance())
+                    if (visibleFragment !is TrackListFragment){
+                        addFragment(R.id.ui_main_container, TrackListFragment.newInstance())
+                    }
                     return@OnNavigationItemSelectedListener true
                 }
             }
             false
         }
+
+//    private fun <T>isFragmentVisible(fragment: Class<T>): Boolean {
+//        val visibleFragment = supportFragmentManager.findFragmentById(R.id.ui_main_container)
+//
+//        if (visibleFragment is fragment){
+//
+//        }
+//    }
 }
