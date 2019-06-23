@@ -3,12 +3,10 @@ package com.mlcorrea.lostparadisefm.ui.feature.home
 import android.os.Bundle
 import androidx.appcompat.widget.SearchView
 import androidx.appcompat.widget.Toolbar
-import androidx.fragment.app.Fragment
 import butterknife.BindView
 import butterknife.ButterKnife
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.jakewharton.rxbinding2.support.v7.widget.RxSearchView
-import com.mlcorrea.domain.model.adapter.ViewModelData
 import com.mlcorrea.lostparadisefm.R
 import com.mlcorrea.lostparadisefm.ui.base.BaseActivity
 import com.mlcorrea.lostparadisefm.ui.feature.album.albums.AlbumListFragment
@@ -17,7 +15,6 @@ import com.mlcorrea.lostparadisefm.ui.feature.track.tracks.TrackListFragment
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import org.koin.androidx.scope.currentScope
-import java.lang.reflect.Type
 import java.util.concurrent.TimeUnit
 
 class MainActivity : BaseActivity() {
