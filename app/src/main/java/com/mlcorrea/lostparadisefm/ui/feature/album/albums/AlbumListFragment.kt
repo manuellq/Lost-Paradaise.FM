@@ -9,7 +9,6 @@ import androidx.recyclerview.widget.GridLayoutManager
 import com.mlcorrea.domain.enum.TypeImage
 import com.mlcorrea.domain.model.Album
 import com.mlcorrea.lostparadisefm.R
-import com.mlcorrea.lostparadisefm.framework.extension.viewModelInit
 import com.mlcorrea.lostparadisefm.ui.base.BaseFragmentList
 import com.mlcorrea.lostparadisefm.ui.base.BaseViewModelPage
 import com.mlcorrea.lostparadisefm.ui.feature.album.albuminfo.AlbumInfoActivity

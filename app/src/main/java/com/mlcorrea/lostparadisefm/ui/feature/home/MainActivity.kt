@@ -8,7 +8,6 @@ import butterknife.ButterKnife
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.jakewharton.rxbinding2.support.v7.widget.RxSearchView
 import com.mlcorrea.lostparadisefm.R
-import com.mlcorrea.lostparadisefm.framework.extension.viewModelInit
 import com.mlcorrea.lostparadisefm.ui.base.BaseActivity
 import com.mlcorrea.lostparadisefm.ui.feature.album.albums.AlbumListFragment
 import com.mlcorrea.lostparadisefm.ui.feature.artist.artists.ArtistsFragment

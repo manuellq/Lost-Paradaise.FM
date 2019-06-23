@@ -30,7 +30,7 @@ class ApiControllerImplTest : UnitTest() {
     lateinit var apiService: ApiService
 
 
-    lateinit var apiController: ApiController
+    private lateinit var apiController: ApiController
 
     @Before
     fun setUp() {
