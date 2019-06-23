@@ -19,7 +19,6 @@ import com.mlcorrea.domain.model.response.ResponseRx
 import com.mlcorrea.domain.network.NetworkRequestState
 import com.mlcorrea.lostparadisefm.R
 import com.mlcorrea.lostparadisefm.framework.extension.observe
-import com.mlcorrea.lostparadisefm.framework.extension.viewModelInit
 import com.mlcorrea.lostparadisefm.ui.base.BaseActivity
 import com.mlcorrea.lostparadisefm.ui.feature.album.albuminfo.adapter.AlbumInfoComparator
 import com.mlcorrea.lostparadisefm.ui.feature.album.albuminfo.adapter.AlbumInfoViewRender
@@ -31,6 +30,7 @@ import org.jetbrains.anko.alert
 import org.jetbrains.anko.appcompat.v7.Appcompat
 import org.jetbrains.anko.cancelButton
 import org.jetbrains.anko.okButton
+import org.koin.android.scope.currentScope
 
 class AlbumInfoActivity : BaseActivity() {
 
@@ -42,7 +42,7 @@ class AlbumInfoActivity : BaseActivity() {
     lateinit var uiRecyclerView: RecyclerView
 
 
-    private lateinit var viewModel: AlbumInfoVM
+    private val viewModel: AlbumInfoVM by currentScope.inject()
     private lateinit var renderRecyclerView: RendererRecyclerViewSortedAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -51,7 +51,7 @@ class AlbumInfoActivity : BaseActivity() {
         ButterKnife.bind(this)
         setupToolbar()
         initViews()
-        viewModel = viewModelInit(viewModelFactoryBis) {
+        viewModel.apply {
             observe(networkState, ::handleNetwork)
             observe(albumData, ::handleResponse)
         }

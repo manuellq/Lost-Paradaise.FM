@@ -18,9 +18,6 @@ dependencies {
     implementation project(':domain')
     //Kotlin
     implementation deps.kotlin.stdlib_java
-    //Dagger 2
-    kapt deps.dagger.compiler
-    implementation deps.dagger.runtime
     //Moshi Serialization
     kapt deps.moshi.moshi_codegen
     api deps.moshi.moshi_core
@@ -29,7 +26,7 @@ dependencies {
     implementation 'org.slf4j:slf4j-simple:1.7.25'
     // Dependencies for local unit tests
     testImplementation deps.junit
-    testImplementation "io.mockk:mockk:1.9.1"
+    testImplementation "io.mockk:mockk:1.9.2"
     testImplementation "com.google.truth:truth:0.43"
 }
 

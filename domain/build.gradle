@@ -21,8 +21,6 @@ dependencies {
     api(deps.okhttp_signpost, {
         exclude group: 'com.squareup.okhttp3'
     })
-    //Dagger
-    implementation deps.dagger.runtime
     //RxJava
     api deps.rxjava.rx_kotlin
     api deps.rxjava.rxjava2
@@ -31,6 +29,6 @@ dependencies {
     implementation 'org.slf4j:slf4j-simple:1.7.25'
     // Dependencies for local unit tests
     testImplementation deps.junit
-    testImplementation "io.mockk:mockk:1.9.1"
+    testImplementation "io.mockk:mockk:1.9.2"
     testImplementation "com.google.truth:truth:0.43"
 }

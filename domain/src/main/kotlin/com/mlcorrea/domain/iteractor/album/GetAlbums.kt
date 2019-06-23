@@ -6,12 +6,11 @@ import com.mlcorrea.domain.iteractor.UseCase
 import com.mlcorrea.domain.model.AlbumPage
 import com.mlcorrea.domain.repository.PlatformRepository
 import io.reactivex.Observable
-import javax.inject.Inject
 
 /**
  * Created by manuel on 07/04/19
  */
-class GetAlbums @Inject constructor(
+class GetAlbums  constructor(
     threadExecutor: ThreadExecutor,
     postExecutionThread: PostExecutionThread,
     private val platformRepository: PlatformRepository

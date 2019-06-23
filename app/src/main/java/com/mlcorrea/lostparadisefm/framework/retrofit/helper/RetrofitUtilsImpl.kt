@@ -3,12 +3,11 @@ package com.mlcorrea.lostparadisefm.framework.retrofit.helper
 import okhttp3.ResponseBody
 import retrofit2.Response
 import retrofit2.adapter.rxjava2.Result
-import javax.inject.Inject
 
 /**
  * Created by manuel on 06/04/19
  */
-class RetrofitUtilsImpl @Inject constructor() : RetrofitUtils {
+class RetrofitUtilsImpl : RetrofitUtils {
 
     override fun getBody(response: Response<*>): ResponseBody? {
         return response.errorBody()

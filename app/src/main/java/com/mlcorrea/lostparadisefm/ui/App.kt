@@ -1,29 +1,22 @@
 package com.mlcorrea.lostparadisefm.ui
 
-import android.app.Activity
 import android.app.Application
 import android.os.StrictMode
 import com.facebook.stetho.Stetho
 import com.mlcorrea.lostparadisefm.BuildConfig
-import com.mlcorrea.lostparadisefm.framework.di.components.ApplicationComponent
-import com.mlcorrea.lostparadisefm.framework.di.components.DaggerApplicationComponent
+import com.mlcorrea.lostparadisefm.framework.di.*
 import com.mlcorrea.lostparadisefm.framework.timber.LifeTreeTimber
 import com.squareup.leakcanary.LeakCanary
-import dagger.android.AndroidInjector
-import dagger.android.DispatchingAndroidInjector
-import dagger.android.HasActivityInjector
+import org.koin.android.ext.koin.androidContext
+import org.koin.android.ext.koin.androidLogger
+import org.koin.core.context.startKoin
 import timber.log.Timber
-import javax.inject.Inject
 
 /**
  * Created by manuel on 06/04/19
  */
-class App : Application(), HasActivityInjector {
+class App : Application() {
 
-    @Inject
-    lateinit var activityInjector: DispatchingAndroidInjector<Activity>
-
-    private lateinit var applicationComponent: ApplicationComponent
 
     override fun onCreate() {
         super.onCreate()
@@ -39,15 +32,22 @@ class App : Application(), HasActivityInjector {
         injectApplicationComponent()
     }
 
-    override fun activityInjector(): AndroidInjector<Activity> {
-        return this.activityInjector
-    }
 
     private fun injectApplicationComponent() {
-        this.applicationComponent = DaggerApplicationComponent.builder()
-            .application(this)
-            .build()
-        this.applicationComponent.inject(this)
+        startKoin {
+            androidLogger()
+            androidContext(this@App)
+            modules(
+                listOf(
+                    apiModule,
+                    repositoryModule,
+                    dataModule,
+                    appModule,
+                    fragmentScope,
+                    activityScope
+                )
+            )
+        }
     }
 
     /**

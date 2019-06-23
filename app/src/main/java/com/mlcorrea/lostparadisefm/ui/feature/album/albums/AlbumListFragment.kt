@@ -21,6 +21,7 @@ import com.mlcorrea.lostparadisefm.ui.feature.home.MainActivityVM
 import com.mlcorrea.lostparadisefm.ui.renders.RendererRecyclerViewPagedAdapter
 import com.mlcorrea.lostparadisefm.ui.renders.baserenders.LoadMoreViewRender
 import com.mlcorrea.lostparadisefm.ui.utils.getUrlImage
+import org.koin.android.scope.currentScope
 
 
 /**
@@ -32,15 +33,14 @@ import com.mlcorrea.lostparadisefm.ui.utils.getUrlImage
 class AlbumListFragment : BaseFragmentList<Album, AlbumDataSource>(R.layout.fragment_album_list) {
 
 
-    private lateinit var viewModel: AlbumListVM
+    private val viewModel: AlbumListVM by currentScope.inject()
     private var viewModelParent: MainActivityVM? = null
 
     override val getViewModel: BaseViewModelPage<AlbumDataSource, Album>
         get() = viewModel
 
     override fun onCreateInitViewModel(savedInstanceState: Bundle?) {
-        viewModel = viewModelInit(viewModelFactoryB) {
-        }
+
     }
 
     override fun initViews() {

@@ -7,12 +7,11 @@ import com.mlcorrea.domain.model.Artist
 import com.mlcorrea.domain.model.response.ResponseRx
 import com.mlcorrea.domain.network.NetworkRequestState
 import io.reactivex.observers.DisposableObserver
-import javax.inject.Inject
 
 /**
  * Created by manuel on 08/04/19
  */
-class ArtistInfoVM @Inject constructor(private val getArtistInfo: GetArtistInfo) : ViewModel() {
+class ArtistInfoVM constructor(private val getArtistInfo: GetArtistInfo) : ViewModel() {
 
     val artistData: MutableLiveData<ResponseRx<Artist>> = MutableLiveData()
     val networkState = MutableLiveData<NetworkRequestState>()

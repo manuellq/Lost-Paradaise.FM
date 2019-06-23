@@ -51,18 +51,12 @@ def arch_core = [:]
 arch_core.testing = "androidx.arch.core:core-testing:$versions.jetpack"
 deps.arch_core = arch_core
 
-def dagger = [:]
-dagger.runtime = "com.google.dagger:dagger:$versions.dagger"
-dagger.android = "com.google.dagger:dagger-android:$versions.dagger"
-dagger.android_support = "com.google.dagger:dagger-android-support:$versions.dagger"
-dagger.compiler = "com.google.dagger:dagger-compiler:$versions.dagger"
-dagger.android_support_compiler = "com.google.dagger:dagger-android-processor:$versions.dagger"
-deps.dagger = dagger
-
 deps.paging = "androidx.paging:paging-runtime:$versions.jetpack"
 deps.paging_rx = "androidx.paging:paging-rxjava2:$versions.jetpack"
 
 deps.constraint_layout = "androidx.constraintlayout:constraintlayout:$versions.constraint_layout"
+
+deps.koin = 'org.koin:koin-android-viewmodel:2.0.1'
 
 //square libraries
 def retrofit = [:]

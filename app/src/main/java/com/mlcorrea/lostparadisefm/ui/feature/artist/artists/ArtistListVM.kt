@@ -5,12 +5,11 @@ import com.mlcorrea.domain.model.Artist
 import com.mlcorrea.lostparadisefm.ui.base.BaseViewModelPage
 import com.mlcorrea.lostparadisefm.ui.feature.artist.artists.adapter.ArtistDataSource
 import com.mlcorrea.lostparadisefm.ui.feature.artist.artists.adapter.ArtistDataSourceFactory
-import javax.inject.Inject
 
 /**
  * Created by manuel on 07/04/19
  */
-class ArtistListVM @Inject constructor(getArtist: GetArtist) :
+class ArtistListVM constructor(getArtist: GetArtist) :
     BaseViewModelPage<ArtistDataSource, Artist>(ArtistDataSourceFactory(getArtist)) {
 
 

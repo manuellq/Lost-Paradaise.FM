@@ -19,7 +19,6 @@ import com.mlcorrea.domain.model.Track
 import com.mlcorrea.domain.model.response.ResponseRx
 import com.mlcorrea.lostparadisefm.R
 import com.mlcorrea.lostparadisefm.framework.extension.observe
-import com.mlcorrea.lostparadisefm.framework.extension.viewModelInit
 import com.mlcorrea.lostparadisefm.ui.base.BaseActivity
 import com.squareup.picasso.Callback
 import com.squareup.picasso.Picasso
@@ -27,6 +26,7 @@ import org.jetbrains.anko.alert
 import org.jetbrains.anko.appcompat.v7.Appcompat
 import org.jetbrains.anko.cancelButton
 import org.jetbrains.anko.okButton
+import org.koin.android.scope.currentScope
 
 class TrackInfoActivity : BaseActivity() {
 
@@ -58,14 +58,14 @@ class TrackInfoActivity : BaseActivity() {
     lateinit var uiCardView: CardView
 
 
-    private lateinit var viewModel: TrackInfoVM
+    private val viewModel: TrackInfoVM by currentScope.inject()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_track_info)
         ButterKnife.bind(this)
         setupToolbar()
-        viewModel = viewModelInit(viewModelFactoryBis) {
+        viewModel.apply {
             observe(trackData, ::handleResponse)
         }
         intent.extras?.let {

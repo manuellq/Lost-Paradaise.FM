@@ -4,12 +4,9 @@ import com.google.common.truth.Truth
 import com.mlcorrea.lostparadisefm.UnitTest
 import com.mlcorrea.lostparadisefm.framework.retrofit.helper.ApiServiceHelperController
 import com.mlcorrea.lostparadisefm.framework.retrofit.service.ApiService
-import io.mockk.Runs
 import io.mockk.every
 import io.mockk.impl.annotations.MockK
 import io.mockk.mockk
-import io.mockk.verify
-import okhttp3.OkHttpClient
 import org.junit.Before
 import org.junit.Test
 import retrofit2.Retrofit

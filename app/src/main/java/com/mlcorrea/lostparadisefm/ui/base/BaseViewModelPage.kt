@@ -26,5 +26,4 @@ abstract class BaseViewModelPage<T : BaseDataSource, V : ViewModelData>(val fact
     val listLiveData: LiveData<PagedList<ViewModelData>> = LivePagedListBuilder(factory, pagedListConfig)
         .build()
 
-
 }

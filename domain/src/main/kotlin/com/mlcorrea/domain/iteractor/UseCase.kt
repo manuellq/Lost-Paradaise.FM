@@ -1,8 +1,8 @@
 package com.mlcorrea.domain.iteractor
 
+import com.google.gdata.util.common.base.Preconditions
 import com.mlcorrea.domain.executor.PostExecutionThread
 import com.mlcorrea.domain.executor.ThreadExecutor
-import dagger.internal.Preconditions
 import io.reactivex.Observable
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.disposables.Disposable

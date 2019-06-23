@@ -15,6 +15,7 @@ import com.mlcorrea.lostparadisefm.ui.feature.artist.artists.ArtistsFragment
 import com.mlcorrea.lostparadisefm.ui.feature.track.tracks.TrackListFragment
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
+import org.koin.android.scope.currentScope
 import java.util.concurrent.TimeUnit
 
 class MainActivity : BaseActivity() {
@@ -26,16 +27,13 @@ class MainActivity : BaseActivity() {
     lateinit var uiToolbar: Toolbar
 
     private val disposables = CompositeDisposable()
-    private lateinit var viewModel: MainActivityVM
+    private val viewModel: MainActivityVM by currentScope.inject()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         ButterKnife.bind(this)
         initViews()
-        viewModel = viewModelInit(viewModelFactoryBis) {
-
-        }
         addFragment(R.id.ui_main_container, AlbumListFragment.newInstance())
     }
 

@@ -6,12 +6,11 @@ import com.mlcorrea.domain.iteractor.track.GetTrackInfo
 import com.mlcorrea.domain.model.Track
 import com.mlcorrea.domain.model.response.ResponseRx
 import io.reactivex.observers.DisposableObserver
-import javax.inject.Inject
 
 /**
  * Created by manuel on 08/04/19
  */
-class TrackInfoVM @Inject constructor(private val getTrackInfo: GetTrackInfo) : ViewModel() {
+class TrackInfoVM  constructor(private val getTrackInfo: GetTrackInfo) : ViewModel() {
 
     val trackData: MutableLiveData<ResponseRx<Track>> = MutableLiveData()
 

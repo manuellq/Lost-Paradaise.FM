@@ -6,12 +6,11 @@ import com.mlcorrea.domain.iteractor.UseCase
 import com.mlcorrea.domain.model.Track
 import com.mlcorrea.domain.repository.PlatformRepository
 import io.reactivex.Observable
-import javax.inject.Inject
 
 /**
  * Created by manuel on 08/04/19
  */
-class GetTrackInfo @Inject constructor(
+class GetTrackInfo  constructor(
     threadExecutor: ThreadExecutor,
     postExecutionThread: PostExecutionThread,
     private val platformRepository: PlatformRepository

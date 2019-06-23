@@ -9,7 +9,6 @@ import androidx.recyclerview.widget.GridLayoutManager
 import com.mlcorrea.domain.enum.TypeImage
 import com.mlcorrea.domain.model.Track
 import com.mlcorrea.lostparadisefm.R
-import com.mlcorrea.lostparadisefm.framework.extension.viewModelInit
 import com.mlcorrea.lostparadisefm.ui.base.BaseFragmentList
 import com.mlcorrea.lostparadisefm.ui.base.BaseViewModelPage
 import com.mlcorrea.lostparadisefm.ui.feature.home.MainActivity
@@ -21,6 +20,7 @@ import com.mlcorrea.lostparadisefm.ui.feature.track.tracks.adapter.TrackViewRend
 import com.mlcorrea.lostparadisefm.ui.renders.RendererRecyclerViewPagedAdapter
 import com.mlcorrea.lostparadisefm.ui.renders.baserenders.LoadMoreViewRender
 import com.mlcorrea.lostparadisefm.ui.utils.getUrlImage
+import org.koin.android.scope.currentScope
 
 
 /**
@@ -30,14 +30,13 @@ import com.mlcorrea.lostparadisefm.ui.utils.getUrlImage
 class TrackListFragment : BaseFragmentList<Track, TrackDataSource>(R.layout.fragment_track_list) {
 
 
-    private lateinit var viewModel: TrackListVM
+    private val viewModel: TrackListVM by currentScope.inject()
     private var viewModelParent: MainActivityVM? = null
 
     override val getViewModel: BaseViewModelPage<TrackDataSource, Track> get() = viewModel
 
     override fun onCreateInitViewModel(savedInstanceState: Bundle?) {
-        viewModel = viewModelInit(viewModelFactoryB) {
-        }
+
     }
 
     override fun initViews() {

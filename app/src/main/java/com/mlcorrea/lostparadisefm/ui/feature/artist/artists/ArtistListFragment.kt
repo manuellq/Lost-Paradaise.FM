@@ -9,7 +9,6 @@ import androidx.recyclerview.widget.GridLayoutManager
 import com.mlcorrea.domain.enum.TypeImage
 import com.mlcorrea.domain.model.Artist
 import com.mlcorrea.lostparadisefm.R
-import com.mlcorrea.lostparadisefm.framework.extension.viewModelInit
 import com.mlcorrea.lostparadisefm.ui.base.BaseFragmentList
 import com.mlcorrea.lostparadisefm.ui.base.BaseViewModelPage
 import com.mlcorrea.lostparadisefm.ui.feature.artist.artistinfo.ArtistInfoActivity
@@ -21,6 +20,7 @@ import com.mlcorrea.lostparadisefm.ui.feature.home.MainActivityVM
 import com.mlcorrea.lostparadisefm.ui.renders.RendererRecyclerViewPagedAdapter
 import com.mlcorrea.lostparadisefm.ui.renders.baserenders.LoadMoreViewRender
 import com.mlcorrea.lostparadisefm.ui.utils.getUrlImage
+import org.koin.android.scope.currentScope
 
 
 /**
@@ -29,7 +29,7 @@ import com.mlcorrea.lostparadisefm.ui.utils.getUrlImage
  */
 class ArtistsFragment : BaseFragmentList<Artist, ArtistDataSource>(R.layout.fragment_artist_list) {
 
-    private lateinit var viewModel: ArtistListVM
+    private val viewModel: ArtistListVM by currentScope.inject()
     private var viewModelParent: MainActivityVM? = null
 
 
@@ -37,8 +37,6 @@ class ArtistsFragment : BaseFragmentList<Artist, ArtistDataSource>(R.layout.frag
         get() = viewModel
 
     override fun onCreateInitViewModel(savedInstanceState: Bundle?) {
-        viewModel = viewModelInit(viewModelFactoryB) {
-        }
     }
 
     override fun initViews() {

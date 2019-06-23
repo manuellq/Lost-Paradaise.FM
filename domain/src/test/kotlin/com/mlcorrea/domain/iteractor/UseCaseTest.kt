@@ -8,7 +8,8 @@ import io.mockk.impl.annotations.RelaxedMockK
 import io.reactivex.Observable
 import io.reactivex.observers.DisposableObserver
 import io.reactivex.schedulers.TestScheduler
-import org.junit.Assert.*
+import org.junit.Assert.assertEquals
+import org.junit.Assert.assertTrue
 import org.junit.Before
 import org.junit.Test
 

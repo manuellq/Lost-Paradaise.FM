@@ -3,15 +3,12 @@ package com.mlcorrea.lostparadisefm.framework.retrofit.apimanager
 import com.mlcorrea.lostparadisefm.framework.retrofit.helper.ApiServiceHelperController
 import com.mlcorrea.lostparadisefm.framework.retrofit.service.ApiService
 import retrofit2.Retrofit
-import javax.inject.Inject
-import javax.inject.Named
-import javax.inject.Singleton
 
 /**
  * Created by manuel on 06/04/19
  */
-@Singleton
-class ApiManagerImpl @Inject constructor(
+
+class ApiManagerImpl constructor(
     private val apiServiceHelperController: ApiServiceHelperController
 ) :
     ApiManager {
