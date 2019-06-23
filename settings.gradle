@@ -1,1 +1,5 @@
-include ':app', ':data', ':domain'
+include ':app'
+include ':domain'
+include ':data'
+project(":data").projectDir = new File(rootDir, "libraries/data")
+project(":domain").projectDir = new File(rootDir, "libraries/domain")
