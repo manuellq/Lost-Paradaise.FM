@@ -26,7 +26,7 @@ dependencies {
     implementation 'org.slf4j:slf4j-simple:1.7.25'
     // Dependencies for local unit tests
     testImplementation deps.junit
-    testImplementation "io.mockk:mockk:1.9.2"
-    testImplementation "com.google.truth:truth:0.43"
+    testImplementation deps.mockk
+    testImplementation deps.truth
 }
 

@@ -114,7 +114,6 @@ dependencies {
     implementation deps.support.palette
     implementation deps.constraint_layout
     //Google lifecycle
-    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
     kapt deps.lifecycle.compiler
     implementation deps.lifecycle.extensions
     //Koin DI
@@ -168,8 +167,8 @@ dependencies {
 
     //Testing Implementation
     testImplementation deps.junit
-    testImplementation "com.google.truth:truth:0.43"
-    testImplementation "io.mockk:mockk:1.9.2"
+    testImplementation deps.mockk
+    testImplementation deps.truth
     testImplementation(deps.roboelectric, {
         exclude group: 'com.android.support'
     })
@@ -177,7 +176,7 @@ dependencies {
     testImplementation "androidx.paging:paging-common:2.1.0" // For Kotlin use paging-common-ktx
 
     //Testing test Implementation
-    androidTestImplementation "com.google.truth:truth:0.43"
+    androidTestImplementation deps.truth
     androidTestImplementation deps.runner
     androidTestImplementation deps.rules
     androidTestImplementation deps.espresso.core

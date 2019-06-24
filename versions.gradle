@@ -10,7 +10,7 @@ versions.anko = "0.10.7"
 versions.jetpack = "2.0.0"
 versions.support = "1.0.0"
 versions.material = "1.0.0"
-versions.constraint_layout = "1.1.2"
+versions.constraint_layout = "1.1.3"
 versions.dagger = "2.21"
 versions.retrofit = "2.4.0"
 versions.okhttp_logging_interceptor = "3.13.1"
@@ -144,7 +144,8 @@ deps.rules = "androidx.test:rules:$versions.test_rules"
 //testImplementation
 deps.junit = "junit:junit:$versions.junit"
 deps.roboelectric = "org.robolectric:robolectric:$versions.robolectric"
-
+deps.mockk = "io.mockk:mockk:1.9.2"
+deps.truth = "com.google.truth:truth:0.43"
 ext.deps = deps
 
 //---------------------------------------------------
